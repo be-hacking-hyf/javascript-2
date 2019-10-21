@@ -1,0 +1,94 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>week 3 project</title>
+  <meta name="description" content="week 3 project">
+
+  <script src="../dependencies/toString.js"></script>
+
+  <script src="../dependencies/prism/script.js"></script>
+  <link rel="stylesheet" type="text/css" href="../dependencies/prism/style.css">
+
+  <link href="../dependencies/mocha/mocha.css" rel="stylesheet" />
+  <script src="../dependencies/mocha/mocha.js"></script>
+  <script src="../dependencies/assert.js"></script>
+
+  <!-- why won't local parser-babylon work -->
+  <script src="../dependencies/prettier/standalone.js"></script>
+  <!-- <script src="https://unpkg.com/prettier@1.13.0/standalone.js"></script> -->
+  <!-- <script src="../dependencies/prettier/parser-babylon.js"></script> -->
+  <script src="https://unpkg.com/prettier@1.13.0/parser-babylon.js"></script>
+
+  <script src="./app.js"></script>
+
+</head>
+
+<body>
+
+  <header style='display:flex; flex-direction: row;'>
+    <h2>Week 2 Project</h2>
+    <div style="padding-top:20px; padding-left:15px;">
+      <a href='./practice-problems/index.html' target='_blank'><button>practice problems</button></a>
+      <a href='./user-interface/index.html' target='_blank'><button>user inteface</button></a>
+      <a href='https://www.badgerbadgerbadger.com/' target='_blank'><button>source on github</button></a>
+    </div>
+  </header>
+
+
+  <section id='code and tests' style='height:90vh; display:flex; flex-direction: row;'>
+
+    <div id='code side' style='width:50%;max-height:100%;overflow-y:scroll'>
+      <pre style='font-size:80%;'><code id='object-code' class="language-js"></code></pre>
+      <script>
+        let appToString = toVariableString(object);
+        if (prettier !== undefined) {
+          appToString = prettier.format(
+            appToString,
+            {
+              parser: "babylon",
+              plugins: prettierPlugins
+            }
+          )
+        }
+
+        const objectCode = document.getElementById('object-code');
+        objectCode.innerHTML = appToString;
+        Prism.highlightAllUnder(objectCode);
+      </script>
+    </div>
+
+    <div id="mocha" style='width:50%;margin-right:0;margin-top:0;margin-left:0;max-height:100%;overflow-y:scroll'></div>
+    <script>
+      mocha.setup({
+        ui: 'bdd',
+      })
+    </script>
+    <script src="./tests/set-current-entry.js"></script>
+    <script src="./tests/get-current-entry.js"></script>
+    <script src="./tests/get-liked-entries.js"></script>
+    <script src="./tests/like-entry.js"></script>
+    <script src="./tests/unlike-entry.js"></script>
+    <script src="./tests/is-primitive.js"></script>
+    <script src="./tests/has-key.js"></script>
+    <script src="./tests/has-value.js"></script>
+    <script src="./tests/add-entry.js"></script>
+    <script src="./tests/remove-entry.js"></script>
+    <script src='./tests/update-entry.js'></script>
+    <script src="./tests/read-all.js"></script>
+    <script src="./tests/find-by-key.js"></script>
+    <script src="./tests/find-by-value.js"></script>
+    <script>
+      mocha.run();
+    </script>
+
+  </section>
+
+
+
+</body>
+
+</html>

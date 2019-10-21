@@ -1,0 +1,51 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>week 1 project UI</title>
+  <meta name="description" content="week 1 project UI">
+
+  <script src="../app.js"></script>
+
+
+  <script src='./views/render-array.js'></script>
+  <script src='./views/render-number.js'></script>
+</head>
+
+<body>
+
+  <section>
+    <input id='new-string-input' placeholder="type new string here" />
+    <button id='addString-button'>add new string</button>
+  </section>
+  <br>
+  <section>
+    <fieldset>
+      <legend>Which method do you want to call?</legend>
+      <label>object.</label>
+      <select id="method-name">
+        <option value="allStrings">allStrings()</option>
+        <!-- make sure users can call all methods! -->
+      </select>
+      <button id='call-it'>call it!</button>
+    </fieldset>
+  </section>
+  <br>
+  <section>
+    <button id='view-sorted-strings'>view all sorted strings</button>
+  </section>
+  <br>
+  <section id='display-zone' style='display:flex; flex-direction: row;'></section>
+
+  <br>
+  <br>
+
+  <!-- <a href='../index.html' on>back to main page</a> -->
+  <button onclick='window.close()' on>back to main page</button>
+
+  <script src='./handlers/view-sorted-strings.js'></script>
+  <script src='./handlers/add-string.js'></script>
+  <script src='./handlers/call-methods.js'></script>
+</body>
+
+</html>

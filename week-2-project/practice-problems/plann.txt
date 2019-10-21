@@ -1,0 +1,3 @@
+copying objects
+
+some objects in arrays exercises

@@ -1,0 +1,67 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>week 2 project UI</title>
+  <meta name="description" content="week 2 project UI">
+
+  <script src="../app.js"></script>
+
+
+  <script src='./views/render-array.js'></script>
+  <script src='./views/render-number.js'></script>
+</head>
+
+<body>
+
+  <section style='display: flex; flex-direction: row;'>
+    <div>
+      <text>key</text><br>
+      <input id='key' placeholder="enter key" />
+    </div>
+    <div style='display: flex; flex-direction: column;'>
+      <text>value</text><br>
+      <select id='value-type'>
+        <option value="string">string</option>
+        <option value="number">number</option>
+        <option value="boolean">boolean</option>
+        <option value="null">null</option>
+        <option value="undefined">undefined</option>
+      </select>
+      <textarea id='value-value' placeholder="enter value"></textarea>
+    </div>
+  </section>
+  <br>
+  <section>
+    <fieldset>
+      <legend>Which method do you want to call?</legend>
+      <label>object.</label>
+      <select id="method-name">
+        <option value="addEntry">addEntry(key, value)</option>
+        <option value="removeEntry">removeEntry(key)</option>
+        <option value="updateEntry">updateEntry(key, value)</option>
+        <option value="readAll">readAll()</option>
+        <option value="findByKey">findByKey(key)</option>
+        <option value="findByValue">findByValue(value)</option>
+      </select>
+      <button id='call-it'>call it!</button>
+    </fieldset>
+  </section>
+  <br>
+  <section>
+    <button id='view-sorted-strings'></button>
+  </section>
+  <br>
+  <section id='display-zone' style='display:flex; flex-direction: row;'></section>
+
+  <br>
+  <br>
+
+  <button onclick='window.close()' on>back to main page</button>
+
+  <script src='./handlers/view-sorted-strings.js'></script>
+  <script src='./handlers/add-value.js'></script>
+  <script src='./handlers/call-methods.js'></script>
+</body>
+
+</html>
