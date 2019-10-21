@@ -55,7 +55,7 @@ try {
     console.assert(9 === obj.result, 'obj.result should be 9');
 
   }
-  evaluate(example_methodsReadValuesFromObjects);
+  evaluate(example_methodsWriteValuesToObjects);
 
   function example_methodsCanDoBoth() {
 
