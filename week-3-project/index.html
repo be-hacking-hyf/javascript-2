@@ -45,7 +45,7 @@
       <pre style='font-size:80%;'><code id='object-code' class="language-js"></code></pre>
       <script>
         let appToString = toVariableString(object);
-        if (prettier !== undefined) {
+        try {
           appToString = prettier.format(
             appToString,
             {
@@ -53,7 +53,7 @@
               plugins: prettierPlugins
             }
           )
-        }
+        } catch (err) { }
 
         const objectCode = document.getElementById('object-code');
         objectCode.innerHTML = appToString;

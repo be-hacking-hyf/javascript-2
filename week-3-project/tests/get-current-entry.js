@@ -15,7 +15,7 @@ describe(`get currentEntry: get the value of this.currentKey if the argument is 
       ['thirdKey', 'thirdValue'],
       ['fourthKey', 'fourthValue']
     ].forEach(arg => {
-      it(`${arg}`, () => {
+      it(`${arg[0]}`, () => {
         object.currentKey = arg[0];
         assert.deepStrictEqual(object.currentEntry, { [arg[0]]: arg[1] });
       });

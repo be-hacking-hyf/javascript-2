@@ -1,5 +1,5 @@
 {
-  const pageTitle = 'pass some tests';
+  const pageTitle = 'using objects';
   const header = document.createElement("h2");
   header.innerHTML = pageTitle;
   document.body.appendChild(header);
@@ -137,19 +137,22 @@ try {
     console.assert(obj.mod === 2, 'assert 1');
     console.assert(obj.equals === 1, 'assert 2');
 
+    obj.setNumber(10);
+    console.assert(obj.number === 10, 'assert 3');
+
     obj.setNumber(2);
-    console.assert(obj.number === 2, 'assert 3');
-    console.assert(obj.mod === 2, 'assert 4');
-    console.assert(obj.equals === 1, 'assert 5');
+    console.assert(obj.number === 2, 'assert 4');
+    console.assert(obj.mod === 2, 'assert 5');
+    console.assert(obj.equals === 1, 'assert 6');
 
     obj.modulo(6);
-    console.assert(obj.mod === 6, 'assert 6');
-    console.assert(obj.equals === 2, 'assert 7');
+    console.assert(obj.mod === 6, 'assert 7');
+    console.assert(obj.equals === 2, 'assert 8');
 
     obj.modulo(obj.number);
-    console.assert(obj.number === 2, 'assert 8');
-    console.assert(obj.mod === 2, 'assert 9');
-    console.assert(obj.equals === 0, 'assert 10');
+    console.assert(obj.number === 2, 'assert 9');
+    console.assert(obj.mod === 2, 'assert 10');
+    console.assert(obj.equals === 0, 'assert 11');
 
   }
   evaluate(writeToObject2);
@@ -225,14 +228,15 @@ try {
   evaluate(readAndWrite1);
 
 
-  function readAndWrite2() {
+  function soMuchLikeTheProject() {
 
     const obj = {
       entries: {},
       newEntry: function (key, value) { },
       readEntry: function (key) { },
       updateEntry: function (key, newValue) { },
-      deleteEntry: function (key) { }
+      deleteEntry: function (key) { },
+      readAll: function () { }
     };
 
     console.assert(obj.newEntry('a', 0) === 0, 'assert 1');
@@ -251,8 +255,15 @@ try {
     console.assert(obj.readEntry('a') === 5, 'assert 10');
     console.assert(obj.readEntry('b') === 1, 'assert 11');
     console.assert(obj.readEntry('c') === undefined, 'assert 12');
+
+    // read all returns a copy of obj.entries
+    console.assert(obj.readAll() !== obj.entries, 'assert 13');
+    const allRead = obj.readAll();
+    console.assert(allRead.a === 5, 'assert 14');
+    console.assert(allRead.b === 1, 'assert 15');
+    console.assert(allRead.c === undefined, 'assert 16');
   }
-  evaluate(readAndWrite2);
+  evaluate(soMuchLikeTheProject);
 
 
 } catch (err) {

@@ -33,20 +33,20 @@
   <header style='display:flex; flex-direction: row;'>
     <h2>Week 1 Project</h2>
     <div style="padding-top:20px; padding-left:15px;">
-      <a href='./practice-problems/index.html' target='_blank'><button>practice problems</button></a>
-      <a href='./user-interface/index.html' target='_blank'><button>user inteface</button></a>
-      <a href='https://www.badgerbadgerbadger.com/' target='_blank'><button>source on github</button></a>
+      <a href='./practice-problems/index.html'><button>practice problems</button></a>
+      <a href='./user-interface/index.html'><button>user inteface</button></a>
+      <a href='https://www.badgerbadgerbadger.com/' target='_blank'><button>source code on github</button></a>
     </div>
   </header>
 
 
   <section id='code and tests' style='height:90vh; display:flex; flex-direction: row;'>
 
-    <div id='code side' style='width:55%;max-height:100%;overflow-y:scroll'>
+    <div id='code side' style='width:50%;max-height:100%;overflow-y:scroll'>
       <pre style='font-size:80%;'><code id='object-code' class="language-js"></code></pre>
       <script>
         let appToString = toVariableString(object);
-        if (prettier !== undefined) {
+        try {
           appToString = prettier.format(
             appToString,
             {
@@ -54,7 +54,7 @@
               plugins: prettierPlugins
             }
           )
-        }
+        } catch (err) { }
 
         const objectCode = document.getElementById('object-code');
         objectCode.innerHTML = appToString;
@@ -62,7 +62,7 @@
       </script>
     </div>
 
-    <div id="mocha" style='width:45%;margin-right:0;margin-top:0;margin-left:0;max-height:100%;overflow-y:scroll'></div>
+    <div id="mocha" style='width:50%;margin-right:0;margin-top:0;margin-left:0;max-height:100%;overflow-y:scroll'></div>
     <script>
       mocha.setup({
         ui: 'bdd',

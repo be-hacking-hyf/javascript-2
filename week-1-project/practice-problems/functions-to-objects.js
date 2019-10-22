@@ -1,5 +1,5 @@
 {
-  const pageTitle = 'functions to methods';
+  const pageTitle = 'functions to objects';
   const header = document.createElement("h2");
   header.innerHTML = pageTitle;
   document.body.appendChild(header);
@@ -16,13 +16,17 @@ try {
 
   function example_methodsReadValuesFromObjects() {
 
-    function sum(a, b) { return a + b };
+    function sum(a, b) {
+      return a + b
+    };
     console.assert(7 === sum(3, 4), 'sum(3,4) should be 7');
     console.assert(9 === sum(5, 4), 'sum(5,4) should be 9');
 
     const obj = {
       a: 0,
-      sum: function (b) { return this.a + b }
+      sum: function (b) {
+        return this.a + b
+      }
     }
 
     // methods can get "arguments" from their object
@@ -39,13 +43,17 @@ try {
 
   function example_methodsWriteValuesToObjects() {
 
-    function sum(a, b) { return a + b };
+    function sum(a, b) {
+      return a + b
+    };
     console.assert(7 === sum(3, 4), 'sum(3,4) should be 7');
     console.assert(9 === sum(5, 4), 'sum(5,4) should be 9');
 
     const obj = {
       result: 0,
-      sum: function (a, b) { this.result = a + b }
+      sum: function (a, b) {
+        this.result = a + b
+      }
     }
 
     // methods can "return" values to their objects
@@ -55,7 +63,8 @@ try {
     console.assert(9 === obj.result, 'obj.result should be 9');
 
   }
-  evaluate(example_methodsReadValuesFromObjects);
+  evaluate(example_methodsWriteValuesToObjects);
+
 
   function example_methodsCanDoBoth() {
 
@@ -67,7 +76,9 @@ try {
       a: 0,
       b: 0,
       result: 0,
-      sum: function () { this.result = this.a + this.b }
+      sum: function () {
+        this.result = this.a + this.b
+      }
     }
 
     // methods can "return" values to their objects
@@ -81,6 +92,35 @@ try {
   }
   evaluate(example_methodsCanDoBoth);
 
+
+  function example_twoMethods() {
+
+    // pure functions can only get their values by argument
+    //  and must return their value to the global scope
+    function pureAdd(a, b) {
+      return a + b;
+    }
+    const result1 = pureAdd(3, 4);
+
+    // methods can also read or save values to their object using 'this'
+    //  it's sort of like they have back-door access to their object
+    const obj = {
+      a: 0,
+      b: 0,
+      setAandB: function (a, b) {
+        this.a = a;
+        this.b = b;
+      },
+      sumAandB: function () {
+        return this.a + this.b;
+      }
+    };
+
+    obj.setAandB(3, 4);
+    const result2 = obj.sumAandB();
+
+  }
+  evaluate(example_twoMethods);
 
 
   function refactor1() {

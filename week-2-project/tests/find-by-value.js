@@ -5,7 +5,12 @@ describe(`findByValue: returns the requested key/value pair, or an informative e
       ['firstKey', 'firstValue'],
       ['secondKey', 'secondValue'],
       ['thirdKey', 'thirdValue'],
-      ['fourthKey', 'fourthValue']
+      ['fourthKey', 'fourthValue'],
+      ['fifthKey', 'fourthValue'],
+      ['sixthKey', 'fourthValue'],
+      ['seventhKey', 'fifthValue'],
+      ['eighthKey', 'fifthValue'],
+      ['ninthKey', 'fifthValue']
     ].forEach(newEntry => object.entries[newEntry[0]] = newEntry[1]);
   });
   describe(`returns a TypeError if the first argument is not a primitive`, () => {
@@ -26,18 +31,24 @@ describe(`findByValue: returns the requested key/value pair, or an informative e
       });
     });
   });
-  const expectedValues = [
-    ['firstValue', { firstKey: 'firstValue' }],
-    ['secondValue', { secondKey: 'secondValue' }],
-    ['thirdValue', { thirdKey: 'thirdValue' }],
-    ['fourthValue', { fourthKey: 'fourthValue' }],
-  ];
   describe(`otherwise returns an object containing the requested key/value pair`, () => {
-    expectedValues.forEach(arg => {
-      it(`object.findByValue("${arg[0]}");`, () => {
+    [
+      ['firstValue', { firstKey: 'firstValue' }],
+      ['secondValue', { secondKey: 'secondValue' }],
+      ['thirdValue', { thirdKey: 'thirdValue' }],
+    ].forEach(arg => {
+      it(`it finds the correct key for ${arg[0]}`, () => {
         const result = object.findByValue(arg[0]);
         assert.deepStrictEqual(result, arg[1]);
       });
+    });
+    it(`it finds all keys containing "fourthValue"`, () => {
+      const result = object.findByValue('fourthValue');
+      assert.deepStrictEqual(Object.keys(result), ['fourthKey', 'fifthKey', 'sixthKey']);
+    });
+    it(`and all keys containing "fifthValue"`, () => {
+      const result = object.findByValue('fifthValue');
+      assert.deepStrictEqual(Object.keys(result), ['seventhKey', 'eighthKey', 'ninthKey']);
     });
   });
 });

@@ -1,9 +1,9 @@
 {
-  const pageTitle = 'project 2 practice problems';
+  const pageTitle = 'array methods';
   const header = document.createElement("h2");
   header.innerHTML = pageTitle;
   document.body.appendChild(header);
-  console.log('%c' + pageTitle, 'font-weight:bold');
+  console.groupCollapsed('%c' + pageTitle, 'font-weight:bold');
 }
 try {
 
@@ -73,7 +73,31 @@ try {
   returnAsNumbers.display = true;
   evaluate(returnAsNumbers, returnAsNumbersTests);
 
-  const sumAllNumbersTests = [
+
+  const numbersToSum1 = [-1, 0, 1];
+  const numbersToSum2 = [-1, 0, -1];
+  const numbersToSum3 = [1, 0, 1];
+
+  const sumAllTests = [
+    { name: 'first', args: [numbersToSum1], expected: 0 },
+    { name: 'second', args: [numbersToSum1], expected: 0 },
+    { name: 'third', args: [numbersToSum2], expected: -2 },
+    { name: 'fourth', args: [numbersToSum2], expected: -2 },
+    { name: 'fifth', args: [[1, 2, 3]], expected: 6 },
+    { name: 'sixth', args: [numbersToSum3], expected: 2 },
+    { name: 'seventh', args: [numbersToSum3], expected: 2 },
+  ];
+  function sumAll(arr) {
+    // write me!
+    // no early return, all the test cases are numbers!
+    // this solution will be very helpful for the next exercise
+  };
+  sumAll.display = true;
+  evaluate(sumAll, sumAllTests);
+
+
+
+  const sumAllNumberysTests = [
     { name: 'first', args: [globalArray5], expected: 3 },
     { name: 'second', args: [globalArray6], expected: 11 },
     { name: 'third', args: [globalArray7], expected: 2 },
@@ -83,12 +107,12 @@ try {
     { name: 'seventh', args: [oddsArray], expected: 9 },
     { name: 'eighth', args: [evensArray], expected: 12 },
   ];
-  function sumAllNumbers(arr) {
+  function sumAllNumberys(arr) {
     // write me!
     // early return condition: array contains no numbery strings
   };
-  sumAllNumbers.display = true;
-  evaluate(sumAllNumbers, sumAllNumbersTests);
+  sumAllNumberys.display = true;
+  evaluate(sumAllNumberys, sumAllNumberysTests);
 
 
   const findAllEvensTests = [
@@ -123,27 +147,6 @@ try {
   findAllOdds.display = true;
   evaluate(findAllOdds, findAllOddsTests);
 
-  const numbersToSum1 = [-1, 0, 1];
-  const numbersToSum2 = [-1, 0, -1];
-  const numbersToSum3 = [1, 0, 1];
-
-  const sumAllTests = [
-    { name: 'first', args: [numbersToSum1], expected: 0 },
-    { name: 'second', args: [numbersToSum1], expected: 0 },
-    { name: 'third', args: [numbersToSum2], expected: -2 },
-    { name: 'fourth', args: [numbersToSum2], expected: -2 },
-    { name: 'fifth', args: [[1, 2, 3]], expected: 6 },
-    { name: 'sixth', args: [numbersToSum3], expected: 2 },
-    { name: 'seventh', args: [numbersToSum3], expected: 2 },
-  ];
-  function sumAll(arr) {
-    // write me!
-    // early return condition: array contains no numbery strings
-  };
-  sumAll.display = true;
-  evaluate(sumAll, sumAllTests);
-
-
 
 } catch (err) {
   console.log(err);
@@ -153,4 +156,5 @@ try {
 }
 {
   document.body.appendChild(document.createElement('hr'));
+  console.groupEnd();
 }
