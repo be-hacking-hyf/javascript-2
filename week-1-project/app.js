@@ -1,17 +1,44 @@
 const object = {
   numberyStrings: [],
   NaNyStrings: [],
-  addString: function (newString) { },
-  allStrings: function () { },
-  evenStrings: function () { },
-  oddStrings: function () { },
-  negativeStrings: function () { },
-  positiveStrings: function () { },
-  zeroStrings: function () { },
-  numberyAsNumbers: function () { },
-  NaNyAsNumbers: function () { },
-  sumOfNumbery: function () { },
-  sumOfNaNy: function () { },
+  isNumberyString: function (param) {
+    // write me! (consider early returns)
+  },
+  addString: function (param) {
+    if (null) return false; // write this early return condition
+
+    // write me! (using this.isNumberyString)
+  },
+  allStrings: function () {
+    // write me!
+  },
+  evenStrings: function () {
+    // write me!
+  },
+  oddStrings: function () {
+    // write me!
+  },
+  negativeStrings: function () {
+    // write me!
+  },
+  positiveStrings: function () {
+    // write me!
+  },
+  zeroStrings: function () {
+    // write me!
+  },
+  numberyAsNumbers: function () {
+    // write me!
+  },
+  NaNyAsNumbers: function () {
+    // write me!
+  },
+  sumOfNumbery: function () {
+    // write me!
+  },
+  sumOfNaNy: function () {
+    // write me!
+  },
 };
 
 
