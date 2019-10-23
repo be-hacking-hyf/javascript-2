@@ -420,19 +420,21 @@ const evaluate = (() => {
   evaluate.renderTestLog = (func, entry) => {
 
     for (let i in entry.args) {
-      const argType = evaluate.abbreviatedType(entry.args[i]);
+      const argType = evaluate.richType(entry.args[i]);
       console.log('%cargs[' + i + ']: ', 'font-weight: bold; color:blue', argType + ',', entry.args[i]);
     }
 
     evaluate.renderImplementation(func, entry);
 
-    const expectedType = evaluate.abbreviatedType(entry.expected);
+    const expectedType = evaluate.richType(entry.expected);
     console.log("%cexpected: ", 'font-weight: bold; color:blue', expectedType + ",", entry.expected);
 
   }
 
-  evaluate.abbreviatedType = (thing) => {
+  evaluate.richType = (thing) => {
     return thing !== null && typeof thing === 'object'
+      // ? thing.constructor.name
+      // : typeof thing
       ? (thing.constructor.name).substring(0, 3)
       : (typeof thing).substring(0, 3);
   };
@@ -462,7 +464,7 @@ const evaluate = (() => {
             : "falsey:"
 
           const assertion = entry.assertion,
-            assType = evaluate.abbreviatedType(assertion),
+            assType = evaluate.richType(assertion),
             messages = entry.messages;
           console.log('%c' + msg, 'color:' + color, '( ' + assType + ',', assertion, '), ', ...messages);
         });
@@ -482,7 +484,9 @@ const evaluate = (() => {
       console.log("%creturned: ", 'font-weight: bold; color:' + returnedColor, '--hidden--')
     } else {
       console.log("%creturned: ", 'font-weight: bold; color:' + returnedColor,
-        (typeof log.returned).substring(0, 3) + ',', log.returned)
+        // (typeof log.returned).substring(0, 3) + ',', log.returned)
+        evaluate.richType(log.returned) + ',', log.returned
+      );
     }
 
   }
@@ -692,7 +696,9 @@ const evaluate = (() => {
 
     const parsonsSnippet = func.toString();
 
-    const jsTutorSnippet = evaluate.commentTopBottom(parsonsSnippet);
+    const jsTutorSnippet = log.isBehavior
+      ? parsonsSnippet
+      : evaluate.commentTopBottom(parsonsSnippet);
     const encodedJST = encodeURIComponent(jsTutorSnippet);
     const sanitizedJST = encodedJST
       .replace(/\(/g, '%28').replace(/\)/g, '%29')

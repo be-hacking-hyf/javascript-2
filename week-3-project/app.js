@@ -1,6 +1,3 @@
-
-
-
 const object = {
   currentKey: '',
   set currentEntry(key) {
@@ -15,12 +12,15 @@ const object = {
   },
   get currentEntry() {
     // write me!
-    // consider using this.findByKey
+    // consider using this.findByKey & this.currentKey
   },
   likedKeys: [],
   get likedEntries() {
     // write me!
     // consider using .map & this.findByKey, then .reduce & Object.assign
+    // this can be done in two steps:
+    //   first, build an array of all the liked entries (this.findByKey)
+    //   second, build a single object containing all of the liked entries
   },
   likeEntry: function (key) {
     if (null) { // write this early-return condition!
@@ -48,7 +48,7 @@ const object = {
   },
 
   // everything below here is the same as last week's project
-  // this week's methods will use them
+  // this week's project will build on top of last week's
   entries: {},
   isPrimitive: function (value) {
     // write me!

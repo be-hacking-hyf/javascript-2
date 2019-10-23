@@ -2,7 +2,7 @@ const object = {
   numberyStrings: [],
   NaNyStrings: [],
   isNumberyString: function (param) {
-    // write me! (consider early returns)
+    // write me!
   },
   addString: function (param) {
     if (null) return false; // write this early return condition
