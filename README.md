@@ -46,7 +46,7 @@ You will be provided with starter code for your object and tests describing what
 
 ### Practice Problems
 
-To help build the skills necessary to pass your ```app.js``` tests, the ```practice-problems``` folder contains exercises that ask you to solve similar problems (but with functions instead of objects), and exercises that introduce some of the JS language features needed to complete your object.
+To help build the skills necessary to pass your ```app.js``` tests, the ```practice-problems``` folder contains exercises that ask you to solve similar problems (but with functions instead of objects), and exercises that introduce some of the JS language features needed to complete your object. You are required to finish every exercise every week, they are there to help you understand the project and to take you further if you're looking for more.
 
 ### User Interface
 
