@@ -60,10 +60,10 @@ The collection consist of a list of exercises.
 Each exercise has a color that indicates the type and result of the exercise.
 
 - **black** read through the code in the corresponding `function` located in the `.js` file and make sure you understand.
-- **purple** also a reading exercise but there won't be a `function` associated with this test.
 - **red** solve all of the problems in the `function`. 
 - **orange** some of the problems still need solving in the `function`.
 - **green** all problems in this `function` have been solved.
+- **purple** solve the problems and complete the test cases in the `function`
 
 - Open the `.js` file in your code editor.
 - Solve and read through the problems.
