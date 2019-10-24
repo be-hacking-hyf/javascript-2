@@ -1,4 +1,4 @@
-function viewAllStringsHandler() {
+function viewSortedStringsHandler() {
 
   // no input, no logic
 
