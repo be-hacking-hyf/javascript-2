@@ -7,7 +7,7 @@ function callMethodsHandler() {
   const result = object[methodName]();
 
   // display to user
-  const displayZone = document.callElementById('display-zone');
+  const displayZone = document.getElementById('display-zone');
   while (displayZone.firstChild) {
     displayZone.removeChild(displayZone.firstChild);
   };
