@@ -1,3 +1,4 @@
+// https://medium.com/@naveenkarippai/learning-how-references-work-in-javascript-a066a4e15600
 // https://www.youtube.com/watch?v=Z_ozyN5MyWY&list=PLzV58Zm8FuBJFfQN5il3ujx6FDAY8Ds3u&index=5
 
 {
@@ -34,7 +35,7 @@ try {
 
     // to create a new object in memory, you must write new curly braces
     const object3 = {};
-    // reassigning object2 will move its pointer ...
+    // reassigning object2 will make it point to ...
     object2 = object3;
     // but not effect the object1 variable
     console.log(object1);
@@ -98,11 +99,11 @@ try {
   function example_garbageCollectingObjects() {
     // if no variables reference an object, it disappears
 
-    let pointer1 = { x: 'hi!' };
-    let pointer2 = pointer1;
+    let reference1 = { x: 'hi!' };
+    let reference2 = reference1;
 
-    pointer1 = null;
-    pointer2 = null;
+    reference1 = null;
+    reference2 = null;
 
     // never to come back again
     // this is the only way to truly delete an object
