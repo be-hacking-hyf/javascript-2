@@ -753,22 +753,29 @@ const evaluate = (() => {
   }
 
   evaluate.errorSearchComponent = (name, err) => {
-    const url = `https://duckduckgo.com/?q=javascript+mdn+${err.name}+${err.message}&atb=v185-2_d&ia=web`;
 
-    const a = document.createElement('a');
+    const text = document.createElement('text');
 
-    name
-      ? a.innerHTML = '(' + name + ') '
-      : null
+    if (name) {
+      const nameText = document.createElement('text');
+      nameText.innerHTML = '(' + name + ') ';
+      nameText.style.color = 'black';
+      text.appendChild(nameText);
+    }
 
-    a.innerHTML += '<strong>' + err.name + '</strong>: <i>DuckDuck Search</i>';
+    text.innerHTML += '<strong>' + err.name + '</strong>: ' + err.message;
+    text.style.color = 'fireBrick';
 
-    a.href = url;
-    a.target = '_blank';
-    a.style.color = 'red';
+    const duckDuckLink = document.createElement('a');
+    duckDuckLink.innerHTML = 'DuckDuck Search';
+    duckDuckLink.href = `https://duckduckgo.com/?q=javascript+mdn+${err.name}+${err.message}&atb=v185-2_d&ia=web`;
+    duckDuckLink.target = '_blank';
+
+    text.appendChild(evaluate.renderText(',  '));
+    text.appendChild(duckDuckLink);
 
     const div = document.createElement('div');
-    div.appendChild(a);
+    div.appendChild(text);
     div.style.marginTop = '5px';
 
     return div;

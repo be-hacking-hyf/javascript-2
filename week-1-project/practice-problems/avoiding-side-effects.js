@@ -137,16 +137,19 @@ try {
 
 
 
-  const object1 = { a: 0, b: 1 };
-  const object2 = { x: 0, y: 1 };
+  const mergingObject1 = { a: 0, b: 1 };
+  const mergingObject2 = { x: 0, y: 1 };
+  const mergingObject3 = { a: 1, y: 2 };
 
   const mergeObjsTests = [
-    { name: 'same args ...', args: [object1, object2], expected: { a: 0, b: 1, x: 0, y: 1 } },
-    { name: '... same return value', args: [object1, object2], expected: { a: 0, b: 1, x: 0, y: 1 } },
-    { name: 'every time!', args: [object1, object2], expected: { a: 0, b: 1, x: 0, y: 1 } },
-    { name: 'case 4', args: [object1, { tree: 'birch' }], expected: { a: 0, b: 1, tree: 'birch' } },
-    { name: 'case 5', args: [{ tree: 'birch' }, object2], expected: { x: 0, y: 1, tree: 'birch' } },
-    { name: 'case 6', args: [object2, {}], expected: { x: 0, y: 1 } },
+    { name: 'same args ...', args: [mergingObject1, mergingObject2], expected: { a: 0, b: 1, x: 0, y: 1 } },
+    { name: '... same return value', args: [mergingObject1, mergingObject2], expected: { a: 0, b: 1, x: 0, y: 1 } },
+    { name: 'every time!', args: [mergingObject1, mergingObject2], expected: { a: 0, b: 1, x: 0, y: 1 } },
+    { name: 'case 4', args: [mergingObject1, { tree: 'birch' }], expected: { a: 0, b: 1, tree: 'birch' } },
+    { name: 'case 5', args: [{ tree: 'birch' }, mergingObject2], expected: { x: 0, y: 1, tree: 'birch' } },
+    { name: 'case 6', args: [mergingObject2, {}], expected: { x: 0, y: 1 } },
+    { name: 'case 7', args: [mergingObject3, mergingObject1], expected: { a: 1, b: 1, y: 2 } },
+    { name: 'case 8', args: [mergingObject3, mergingObject2], expected: { x: 0, y: 2, a: 1 } },
   ];
   function mergeObjects(obj1, obj2) {
     // write me!
@@ -155,15 +158,14 @@ try {
   evaluate(mergeObjects, mergeObjsTests);
 
 
-  const array1 = [0, 'e', true];
-  const array2 = ['p', null, Infinity];
+  const replaceArray = [0, 'e', true];
 
   const replaceItemTests = [
-    { name: 'same args ...', args: [array1, 2, 'hi!'], expected: [0, 'e', 'hi!'] },
-    { name: '... same return value', args: [array1, 2, 'hi!'], expected: [0, 'e', 'hi!'] },
-    { name: 'every time !', args: [array1, 2, 'hi!'], expected: [0, 'e', 'hi!'] },
-    { name: 'case 4', args: [array1, 1, 'bye!'], expected: [0, 'bye!', true] },
-    { name: 'case 5', args: [array1, 0, 'huh'], expected: ['huh', 'e', true] },
+    { name: 'same args ...', args: [replaceArray, 2, 'hi!'], expected: [0, 'e', 'hi!'] },
+    { name: '... same return value', args: [replaceArray, 2, 'hi!'], expected: [0, 'e', 'hi!'] },
+    { name: 'every time !', args: [replaceArray, 2, 'hi!'], expected: [0, 'e', 'hi!'] },
+    { name: 'case 4', args: [replaceArray, 1, 'bye!'], expected: [0, 'bye!', true] },
+    { name: 'case 5', args: [replaceArray, 0, 'huh'], expected: ['huh', 'e', true] },
     { name: 'case 6', args: [['p', null], 0, null], expected: [null, null] },
   ];
   function replaceItem(arr, index, newItem) {
@@ -173,13 +175,17 @@ try {
   evaluate(replaceItem, replaceItemTests);
 
 
+
+  const combineArray1 = [0, 'e', true];
+  const combineArray2 = ['p', null, Infinity];
+
   const combineArraysTests = [
-    { name: 'same args ...', args: [array1, array2], expected: [0, 'e', true, 'p', null, Infinity] },
-    { name: '... same return value', args: [array1, array2], expected: [0, 'e', true, 'p', null, Infinity] },
-    { name: 'every time!', args: [array1, array2], expected: [0, 'e', true, 'p', null, Infinity] },
-    { name: 'case 4', args: [array2, array1], expected: ['p', null, Infinity, 0, 'e', true] },
-    { name: 'case 5', args: [array2, []], expected: ['p', null, Infinity] },
-    { name: 'case 6', args: [array2, [undefined]], expected: ['p', null, Infinity, undefined] },
+    { name: 'same args ...', args: [combineArray1, combineArray2], expected: [0, 'e', true, 'p', null, Infinity] },
+    { name: '... same return value', args: [combineArray1, combineArray2], expected: [0, 'e', true, 'p', null, Infinity] },
+    { name: 'every time!', args: [combineArray1, combineArray2], expected: [0, 'e', true, 'p', null, Infinity] },
+    { name: 'case 4', args: [combineArray2, combineArray1], expected: ['p', null, Infinity, 0, 'e', true] },
+    { name: 'case 5', args: [combineArray2, []], expected: ['p', null, Infinity] },
+    { name: 'case 6', args: [combineArray2, [undefined]], expected: ['p', null, Infinity, undefined] },
   ];
   function combineArrays(arr1, arr2) {
     // write me!
@@ -188,30 +194,35 @@ try {
   evaluate(combineArrays, combineArraysTests);
 
 
+
+  const repeatItemsArray1 = [0, 'e', true];
+
   const repeatItemsTests = [
-    { name: 'same args ...', args: [array1, 2], expected: [[0, 0], ['e', 'e'], [true, true]] },
-    { name: '... same return value', args: [array1, 2], expected: [[0, 0], ['e', 'e'], [true, true]] },
-    { name: 'every time !', args: [array1, 2], expected: [[0, 0], ['e', 'e'], [true, true]] },
-    { name: 'case 4', args: [array1, 1], expected: [[0], ['e'], [true]] },
-    { name: 'case 5', args: [array1, 0], expected: [[], [], []] },
+    { name: 'same args ...', args: [repeatItemsArray1, 2], expected: [[0, 0], ['e', 'e'], [true, true]] },
+    { name: '... same return value', args: [repeatItemsArray1, 2], expected: [[0, 0], ['e', 'e'], [true, true]] },
+    { name: 'every time !', args: [repeatItemsArray1, 2], expected: [[0, 0], ['e', 'e'], [true, true]] },
+    { name: 'case 4', args: [repeatItemsArray1, 1], expected: [[0], ['e'], [true]] },
+    { name: 'case 5', args: [repeatItemsArray1, 0], expected: [[], [], []] },
     { name: 'case 6', args: [['p', null], 2], expected: [['p', 'p'], [null, null]] },
   ];
-  function repeatItems(arr, numRepeats) {
+  function repeatItems(items, numRepeats) {
     // write me!
   }
   repeatItems.display = true;
   evaluate(repeatItems, repeatItemsTests);
 
-  const globalArray1 = [1, 2, 3];
-  const globalArray2 = [2, 3, 4];
-  const globalArray3 = ['3', null, 'hi!'];
-  const globalArray4 = [true, false, '5'];
+
+
+  const arrayToConcat1 = [1, 2, 3];
+  const arrayToConcat2 = [2, 3, 4];
+  const arrayToConcat3 = ['3', null, 'hi!'];
+  const arrayToConcat4 = [true, false, '5'];
 
   const concatArraysTests = [
-    { name: 'first', args: [globalArray1, globalArray2], expected: [2, 3, 4, 1, 2, 3] },
-    { name: 'second', args: [globalArray1, globalArray3], expected: ['3', null, 'hi!', 1, 2, 3] },
-    { name: 'third', args: [['hello'], globalArray4], expected: ['hello', true, false, '5'] },
-    { name: 'fourth', args: [['hello'], ['world']], expected: ['hello', 'world'] },
+    { name: 'first', args: [arrayToConcat1, arrayToConcat2], expected: [2, 3, 4, 1, 2, 3] },
+    { name: 'second', args: [arrayToConcat1, arrayToConcat3], expected: ['3', null, 'hi!', 1, 2, 3] },
+    { name: 'third', args: [['hello'], arrayToConcat4], expected: [true, false, '5', 'hello'] },
+    { name: 'fourth', args: [['hello'], ['world']], expected: ['world', 'hello'] },
   ];
   function concatArrays(arr1, arr2) {
     // write me!
@@ -219,15 +230,22 @@ try {
   concatArrays.display = true;
   evaluate(concatArrays, concatArraysTests);
 
+
+
+  const arrayToMerge1 = [1, 2, 3];
+  const arrayToMerge2 = [2, 3, 4];
+  const arrayToMerge3 = ['3', null, 'hi!'];
+
   const mergeArraysTests = [
-    { name: 'first', args: [globalArray1, globalArray2], expected: [1, 2, 3, 4] },
-    { name: 'second', args: [globalArray1, globalArray3], expected: [1, 2, 3, '3', null, 'hi!'] },
-    { name: 'third', args: [['hi!'], globalArray3], expected: ['hi!', '3', null] },
+    { name: 'first', args: [arrayToMerge1, arrayToMerge2], expected: [1, 2, 3, 4] },
+    { name: 'second', args: [arrayToMerge1, arrayToMerge3], expected: [1, 2, 3, '3', null, 'hi!'] },
+    { name: 'third', args: [['hi!'], arrayToMerge3], expected: ['hi!', '3', null] },
     { name: 'fourth', args: [['hello'], ['hello', 'world']], expected: ['hello', 'world'] },
-    { name: 'fifth', args: [globalArray2, globalArray1], expected: [2, 3, 4, 1] },
+    { name: 'fifth', args: [arrayToMerge2, arrayToMerge1], expected: [2, 3, 4, 1] },
   ];
   function mergeArrays(arr1, arr2) {
     // write me!
+    // consider filtering one of the arrs with .indexOf in the others
   }
   mergeArrays.display = true;
   evaluate(mergeArrays, mergeArraysTests);

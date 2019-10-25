@@ -1,3 +1,5 @@
+
+
 const object = {
   currentKey: '',
   set currentEntry(key) {

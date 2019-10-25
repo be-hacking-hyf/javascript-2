@@ -8,15 +8,15 @@
 try {
 
 
-  const globalArray1 = [1, 2, 3];
-  const globalArray2 = [2, 3, 4];
-  const globalArray3 = ['3', null, 'hi!'];
-  const globalArray4 = [true, false, '5'];
+  const arrToConcat1 = [1, 2, 3];
+  const arrToConcat2 = [2, 3, 4];
+  const arrToConcat3 = ['3', null, 'hi!'];
+  const arrToConcat4 = [true, false, '5'];
 
   const concatArraysTests = [
-    { name: 'first', args: [globalArray1, globalArray2], expected: [2, 3, 4, 1, 2, 3] },
-    { name: 'second', args: [globalArray1, globalArray3], expected: ['3', null, 'hi!', 1, 2, 3] },
-    { name: 'third', args: [['hello'], globalArray4], expected: ['hello', true, false, '5'] },
+    { name: 'first', args: [arrToConcat2, arrToConcat1], expected: [2, 3, 4, 1, 2, 3] },
+    { name: 'second', args: [arrToConcat3, arrToConcat1], expected: ['3', null, 'hi!', 1, 2, 3] },
+    { name: 'third', args: [['hello'], arrToConcat4], expected: ['hello', true, false, '5'] },
     { name: 'fourth', args: [['hello'], ['world']], expected: ['hello', 'world'] },
   ];
   function concatArrays(arr1, arr2) {
@@ -42,33 +42,34 @@ try {
   ];
   function isNaNyString(arg) {
     // write me!
-    // can you write this in one line?
+    // can you write this in one line? (isNaN will be helpful)
   }
   isNaNyString.quizzing = true;
   isNaNyString.display = true;
   evaluate(isNaNyString, isNaNyStringTests);
 
 
-  const globalArray5 = ['.', '1', '2', ':'];
-  const globalArray6 = ['1', 'two', 'three', '10'];
-  const globalArray7 = ['one', '2', '', 'NaN'];
-  const globalArray8 = ['.', 1, 2, NaN];
+  const thingsToNumber1 = ['.', '1', '2', ':'];
+  const thingsToNumber2 = ['1', 'two', 'three', '10'];
+  const thingsToNumber3 = ['one', '2', '', 'NaN'];
+  const thingsToNumber4 = ['.', 1, 2, NaN];
 
-  const oddsArray = ['1', '3', '5'];
-  const evensArray = ['2', '4', '6'];
+  const oddsToNumber = ['1', '3', '5'];
+  const evensToNumber = ['2', '4', '6'];
 
   const returnAsNumbersTests = [
-    { name: 'first', args: [globalArray5], expected: [1, 2] },
-    { name: 'second', args: [globalArray6], expected: [1, 10] },
-    { name: 'third', args: [globalArray7], expected: [2, 0] },
-    { name: 'fourth', args: [globalArray8], expected: null },
+    { name: 'first', args: [thingsToNumber1], expected: [1, 2] },
+    { name: 'second', args: [thingsToNumber2], expected: [1, 10] },
+    { name: 'third', args: [thingsToNumber3], expected: [2, 0] },
+    { name: 'fourth', args: [thingsToNumber4], expected: null },
     { name: 'fifth', args: [[1, 2, 3]], expected: null },
-    { name: 'sixth', args: [oddsArray], expected: [1, 3, 5] },
-    { name: 'seventh', args: [evensArray], expected: [2, 4, 6] },
+    { name: 'sixth', args: [oddsToNumber], expected: [1, 3, 5] },
+    { name: 'seventh', args: [evensToNumber], expected: [2, 4, 6] },
   ];
   function returnAsNumbers(arr) { // return an array of nonNanny strings cast to Number
     // write me!
     // early return condition: array contains no numbery strings
+    //   consider using a variation of your solution to isNaNyString (and .every)
   };
   returnAsNumbers.display = true;
   evaluate(returnAsNumbers, returnAsNumbersTests);
@@ -96,16 +97,23 @@ try {
   evaluate(sumAll, sumAllTests);
 
 
+  const sumNumberys1 = ['.', '1', '2', ':'];
+  const sumNumberys2 = ['1', 'two', 'three', '10'];
+  const sumNumberys3 = ['one', '2', '', 'NaN'];
+  const sumNumberys4 = ['.', 1, 2, NaN];
+
+  const oddsToSum = ['1', '3', '5'];
+  const evensToSum = ['2', '4', '6'];
 
   const sumAllNumberysTests = [
-    { name: 'first', args: [globalArray5], expected: 3 },
-    { name: 'second', args: [globalArray6], expected: 11 },
-    { name: 'third', args: [globalArray7], expected: 2 },
-    { name: 'fourth', args: [globalArray8], expected: null },
+    { name: 'first', args: [sumNumberys1], expected: 3 },
+    { name: 'second', args: [sumNumberys2], expected: 11 },
+    { name: 'third', args: [sumNumberys3], expected: 2 },
+    { name: 'fourth', args: [sumNumberys4], expected: null },
     { name: 'fifth', args: [[1, 2, 3]], expected: null },
     { name: 'sixth', args: [['1', '2', '3']], expected: 6 },
-    { name: 'seventh', args: [oddsArray], expected: 9 },
-    { name: 'eighth', args: [evensArray], expected: 12 },
+    { name: 'seventh', args: [oddsToSum], expected: 9 },
+    { name: 'eighth', args: [evensToSum], expected: 12 },
   ];
   function sumAllNumberys(arr) {
     // write me!
@@ -115,14 +123,24 @@ try {
   evaluate(sumAllNumberys, sumAllNumberysTests);
 
 
+
+
+  const findEvensArray1 = ['.', '1', '2', ':'];
+  const findEvensArray2 = ['1', 'two', 'three', '10'];
+  const findEvensArray3 = ['one', '2', '', 'NaN'];
+  const findEvensArray4 = ['.', 1, 2, NaN];
+
+  const oddsToNotFind = ['1', '3', '5'];
+  const evensToFind = ['2', '4', '6'];
+
   const findAllEvensTests = [
-    { name: 'first', args: [globalArray5], expected: ['2'] },
-    { name: 'second', args: [globalArray6], expected: ['10'] },
-    { name: 'third', args: [globalArray7], expected: ['2', ''] },
-    { name: 'fourth', args: [globalArray8], expected: null },
+    { name: 'first', args: [findEvensArray1], expected: ['2'] },
+    { name: 'second', args: [findEvensArray2], expected: ['10'] },
+    { name: 'third', args: [findEvensArray3], expected: ['2', ''] },
+    { name: 'fourth', args: [findEvensArray4], expected: null },
     { name: 'fifth', args: [[1, 2, 3]], expected: null },
-    { name: 'sixth', args: [oddsArray], expected: [] },
-    { name: 'seventh', args: [evensArray], expected: ['2', '4', '6'] },
+    { name: 'sixth', args: [oddsToNotFind], expected: [] },
+    { name: 'seventh', args: [evensToFind], expected: ['2', '4', '6'] },
   ];
   function findAllEvens(arr) {
     // write me!
@@ -131,14 +149,24 @@ try {
   findAllEvens.display = true;
   evaluate(findAllEvens, findAllEvensTests);
 
+
+
+  const findOddsArray1 = ['.', '1', '2', ':'];
+  const findOddsArray2 = ['1', 'two', 'three', '10'];
+  const findOddsArray3 = ['one', '2', '', 'NaN'];
+  const findOddsArray4 = ['.', 1, 2, NaN];
+
+  const oddsToFind = ['1', '3', '5'];
+  const evensToNotFind = ['2', '4', '6'];
+
   const findAllOddsTests = [
-    { name: 'first', args: [globalArray5], expected: ['1'] },
-    { name: 'second', args: [globalArray6], expected: ['1'] },
-    { name: 'third', args: [globalArray7], expected: [] },
-    { name: 'fourth', args: [globalArray8], expected: null },
+    { name: 'first', args: [findOddsArray1], expected: ['1'] },
+    { name: 'second', args: [findOddsArray2], expected: ['1'] },
+    { name: 'third', args: [findOddsArray3], expected: [] },
+    { name: 'fourth', args: [findOddsArray4], expected: null },
     { name: 'fifth', args: [[1, 2, 3]], expected: null },
-    { name: 'sixth', args: [oddsArray], expected: ['1', '3', '5'] },
-    { name: 'seventh', args: [evensArray], expected: [] },
+    { name: 'sixth', args: [oddsToFind], expected: ['1', '3', '5'] },
+    { name: 'seventh', args: [evensToNotFind], expected: [] },
   ];
   function findAllOdds(arr) {
     // write me!
