@@ -1,4 +1,5 @@
-// https://www.youtube.com/watch?v=W1NTK09o-vM&list=PLzV58Zm8FuBJFfQN5il3ujx6FDAY8Ds3u&index=4
+// https://www.youtube.com/watch?v=W1NTK09o-vM&list=PLzV58Zm8FuBJFfQN5il3ujx6FDAY8Ds3u&index=4    
+// https://medium.com/@naveenkarippai/learning-how-references-work-in-javascript-a066a4e15600
 
 {
   const pageTitle = 'arrays';
@@ -35,7 +36,7 @@ try {
 
     // to create a new array in memory, you must write new square brackets
     const array3 = [];
-    // reassigning object2 will move its pointer ...
+    // reassigning object2 will make it point to ...
     array2 = array3;
     // but not effect the array1 variable
     console.log(array1);
@@ -88,11 +89,11 @@ try {
   function example_garbageCollectingArrays() {
     // if no variables reference an array, it disappears
 
-    let pointer1 = ['hi!'];
-    let pointer2 = pointer1;
+    let reference1 = ['hi!'];
+    let reference2 = reference1;
 
-    pointer1 = null;
-    pointer2 = null;
+    reference1 = null;
+    reference2 = null;
 
     // never to come back again
     // this is the only way to truly delete an array

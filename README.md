@@ -46,7 +46,30 @@ You will be provided with starter code for your object and tests describing what
 
 ### Practice Problems
 
-To help build the skills necessary to pass your ```app.js``` tests, the ```practice-problems``` folder contains exercises that ask you to solve similar problems (but with functions instead of objects), and exercises that introduce some of the JS language features needed to complete your object.
+To help build the skills necessary to pass your ```app.js``` tests, the ```practice-problems``` folder contains exercises that ask you to solve similar problems (but with functions instead of objects), and exercises that introduce some of the JS language features needed to complete your object. You are required to finish every exercise every week, they are there to help you understand the project and to take you further if you're looking for more.
+
+#### Getting started
+
+- Navigate to the a week directory (e.g. `week-1-project`) in your document explorer.
+- Navigate to the `practice-problem` sub directory.
+- Open the `index.html` page in your browser.
+
+Each header represents a collection of exercises.   
+Every collection has a corresponding `.js` file that you can find in the `/week-x-project/practice-problems` directory.
+The collection consist of a list of exercises.
+Each exercise has a color that indicates the type and result of the exercise.
+
+- **black** read through the code in the corresponding `function` located in the `.js` file and make sure you understand.
+- **red** the `function` threw at least one error. 
+- **orange** the `function` did not pass at least one test case or console.assert.
+- **green** all problems in this `function` have been solved.
+- **purple** one or more of the test cases are invalid (missing name, args not an array, ...)
+
+- Open the `.js` file in your code editor.
+- Solve and read through the problems.
+- When you solved a problem be sure to save `.js` file and refresh `index.html` in your browser to view the result.
+
+You'll know you've completed the exercises when every line in your browser is green. (except the examples, they can stay black)
 
 ### User Interface
 

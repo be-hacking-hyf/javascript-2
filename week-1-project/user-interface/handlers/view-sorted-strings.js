@@ -15,7 +15,7 @@ function viewSortedStringsHandler() {
   displayZone.appendChild(NaNyList);
 
   // logs for developer
-  console.log(`\n--- viewSortedStringsHandler ---`);
+  console.log(`\n--- viewAllStringsHandler ---`);
   console.log('object.numberyStrings:',
     object.numberyStrings.constructor.name,
     ',', object.numberyStrings);
