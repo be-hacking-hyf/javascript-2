@@ -453,7 +453,9 @@ const evaluate = (() => {
       const assertsColor = asserts.every(entry => entry.assertion)
         ? "green" // function passed all of it's asserts / test cases
         : "orange"
-      console.groupCollapsed("%c asserts:", "color:" + assertsColor);
+      log.isBehavior
+        ? console.groupCollapsed("%c asserts:", "color:" + assertsColor)
+        : console.group("%c asserts:", "color:" + assertsColor)
       {
         asserts.forEach(entry => {
           const color = entry.assertion
@@ -786,7 +788,7 @@ const evaluate = (() => {
 
 
 /*
-  Copyright 2019 janke-learning
+  Copyright 2019- janke-learning
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the Lesser GNU General Public License as published by
