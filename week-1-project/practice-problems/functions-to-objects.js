@@ -161,7 +161,7 @@ try {
 
     // refactor this function into a method
     function mergeArrays(arr1, arr2) {
-      return [...arr1, arr2];
+      return [...arr1, ...arr2];
     }
 
     const obj = {
