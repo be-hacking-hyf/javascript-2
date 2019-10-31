@@ -152,6 +152,8 @@ try {
     { name: 'case 8', args: [mergingObject3, mergingObject2], expected: { x: 0, y: 2, a: 1 } },
   ];
   function mergeObjects(obj1, obj2) {
+     let obj3 = {...obj2,...obj1}
+     return obj3;
     // write me!
   }
   mergeObjects.display = true;
@@ -169,8 +171,11 @@ try {
     { name: 'case 6', args: [['p', null], 0, null], expected: [null, null] },
   ];
   function replaceItem(arr, index, newItem) {
-    // write me!
-  }
+    let result = [...arr];
+     result[index]=newItem;
+     return result;
+    }
+  
   replaceItem.display = true;
   evaluate(replaceItem, replaceItemTests);
 
@@ -188,6 +193,8 @@ try {
     { name: 'case 6', args: [combineArray2, [undefined]], expected: ['p', null, Infinity, undefined] },
   ];
   function combineArrays(arr1, arr2) {
+    let arr3 = [...arr1,...arr2];
+    return arr3;
     // write me!
   }
   combineArrays.display = true;
@@ -206,6 +213,9 @@ try {
     { name: 'case 6', args: [['p', null], 2], expected: [['p', 'p'], [null, null]] },
   ];
   function repeatItems(items, numRepeats) {
+    let result = items.map(e => { let arr1=[];
+    return arr1.fill(e, 0, numRepeats)});
+    return result;
     // write me!
   }
   repeatItems.display = true;
@@ -225,6 +235,9 @@ try {
     { name: 'fourth', args: [['hello'], ['world']], expected: ['world', 'hello'] },
   ];
   function concatArrays(arr1, arr2) {
+    let arr3 = arr2.concat(arr1);
+   // arr3.concat(arr2, arr1);
+    return arr3;
     // write me!
   }
   concatArrays.display = true;
@@ -244,6 +257,12 @@ try {
     { name: 'fifth', args: [arrayToMerge2, arrayToMerge1], expected: [2, 3, 4, 1] },
   ];
   function mergeArrays(arr1, arr2) {
+    let arr3 = [...arr1];
+    for (i=0; i<arr2.length; i++) {
+      let a = arr1.indexOf(arr2[i]);
+      if (a =-1) { arr3.push(arr2[i]);
+      }
+    }
     // write me!
     // consider filtering one of the arrs with .indexOf in the others
   }

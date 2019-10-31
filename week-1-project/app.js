@@ -2,7 +2,7 @@ const object = {
   numberyStrings: [],
   NaNyStrings: [],
   isNumberyString: function (param) {
-    // write me!
+    return typeof param === 'string' && !isNaN(param);
   },
   addString: function (param) {
     if (null) return false; // write this early return condition

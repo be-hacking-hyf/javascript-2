@@ -20,6 +20,8 @@ try {
     { name: 'fourth', args: [['hello'], ['world']], expected: ['hello', 'world'] },
   ];
   function concatArrays(arr1, arr2) {
+    let arr3 = arr1.concat(arr2);
+    return arr3;
     // write me!
   }
   concatArrays.display = true;
@@ -41,6 +43,7 @@ try {
     { name: 'thirteenth', args: [null], expected: null },
   ];
   function isNaNyString(arg) {
+    return isNaN(arg);
     // write me!
     // can you write this in one line? (isNaN will be helpful)
   }
@@ -66,7 +69,8 @@ try {
     { name: 'sixth', args: [oddsToNumber], expected: [1, 3, 5] },
     { name: 'seventh', args: [evensToNumber], expected: [2, 4, 6] },
   ];
-  function returnAsNumbers(arr) { // return an array of nonNanny strings cast to Number
+  function returnAsNumbers(arr) { 
+    // return an array of nonNanny strings cast to Number
     // write me!
     // early return condition: array contains no numbery strings
     //   consider using a variation of your solution to isNaNyString (and .every)
@@ -89,6 +93,13 @@ try {
     { name: 'seventh', args: [numbersToSum3], expected: 2 },
   ];
   function sumAll(arr) {
+    let b = 0;
+    for (i=0; i<arr.length; i++) {
+      let a = Number(arr[i]);
+      b +=a;
+  
+    } 
+    return b;
     // write me!
     // no early return, all the test cases are numbers!
     // this solution will be very helpful for the next exercise
