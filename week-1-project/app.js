@@ -5,11 +5,13 @@ const object = {
     return typeof param === 'string' && !isNaN(param);
   },
   addString: function (param) {
-    if (typeof param !== 'string') return false ; // write this early return condition
+   if ( typeof param !== 'string') return false ;
+    ; // write this early return condition
 
     if (this.isNumberyString(param) === true) {
       this.numberyStrings.push(param);
     } else  this.NaNyStrings.push(param);
+    return true
 
       // write me! (using this.isNumberyString)
   },
