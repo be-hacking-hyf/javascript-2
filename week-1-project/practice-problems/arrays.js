@@ -102,22 +102,22 @@ try {
 
 
   function passTheAssertions1() {
-    ; // declare and assign a1
-    ; // declare and assign a2
+   let a1 = [] ; // declare and assign a1
+   let a2 = a1 ; // declare and assign a2
     console.assert(a1 === a2, 'a1 should strictly equal a2');
 
-    ; // declare and assign b1
-    ; // declare and assign b2
+    let b1 = []; // declare and assign b1
+    let b2 = []; // declare and assign b2
     console.assert(b1 !== b2, 'b1 should not strictly equal b2');
 
     // ---
 
-    ; // write one line to pass the assertions
+    a1[0] = 'hi!'; // write one line to pass the assertions
     console.assert(a1[0] === a2[0], 'a1[0] should strictly equal a2[0]');
     console.assert(a1[0] === 'hi!', 'a1.x should strictly equal "hi!"');
 
-    ; // write two lines to pass the assertions
-    ;
+    b1[0] === 'bye!'; // write two lines to pass the assertions
+    b2[0] === 'bye!';
     console.assert(b1[0] === b2[0], 'b1[0] should strictly equal b2[0]');
     console.assert(b1[0] === 'bye!', 'b1.x should strictly equal "bye!"');
   }
