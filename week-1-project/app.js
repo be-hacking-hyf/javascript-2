@@ -94,15 +94,15 @@ const object = {
   },
   zeroStrings: function () {
     // write me!
-    function zerro(number){
-      return number ==0 || number =='';
+    function sifir(number){
+      return number == 0 || number ==" ";
     }
     if(this.NaNyStrings.length !== 0 && this.numberyStrings.length === 0){
       return this.numberyStrings;
     }else if( this.NaNyStrings.length === 0 && this.numberyStrings.length !== 0){
-      return this.numberyStrings.filter(number);
+      return this.numberyStrings.filter(sifir);
     }else if (this.NaNyStrings.length !== 0 && this.numberyStrings.length !== 0){
-      return this.numberyStrings.filter(number);
+      return this.numberyStrings.filter(sifir);
     }
 
   },
