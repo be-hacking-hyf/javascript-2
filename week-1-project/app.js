@@ -57,21 +57,16 @@ const object = {
     // write me!
   },
   sumOfNumbery: function (param) {
-    let sum = 0;
-    for (i in this.numberyStrings) {
+   let sum = 0;
+   for (i in this.numberyStrings) {
       sum += Number(this.numberyStrings[i]);
     }
-    return sum;
-  
-    // write me!
+   return sum;
+       // write me!
   },
   sumOfNaNy: function (param) {
-    let sum;
-    for (i in this.NaNyStrings) {
-      sum += Number(this.NaNyStrings[i]);
+    return NaN;
     }
-    return sum;
-  }
 };
 
 
