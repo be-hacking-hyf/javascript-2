@@ -1,5 +1,6 @@
 // https://medium.com/@naveenkarippai/learning-how-references-work-in-javascript-a066a4e15600
 // https://www.youtube.com/watch?v=Z_ozyN5MyWY&list=PLzV58Zm8FuBJFfQN5il3ujx6FDAY8Ds3u&index=5
+// http://javascript.info/object
 
 {
   const pageTitle = 'objects';
