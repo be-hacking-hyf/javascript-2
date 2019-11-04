@@ -17,8 +17,8 @@ const object = {
   allStrings: function () {
     
     if (this.NaNyStrings.length===0) return this.numberyStrings;
-    else if(this.numberyStrings.length===0) return this.NaNyStrings;
-    else return this.numberyStrings.concat(this.NaNyStrings);
+    if(this.numberyStrings.length===0) return this.NaNyStrings;
+    return this.numberyStrings.concat(this.NaNyStrings);
   },
   evenStrings: function () {
     
@@ -70,15 +70,18 @@ const object = {
     }
   },
   zeroStrings: function () {
-    if (this.NaNyStrings.length !== 0 && this.numberyStrings.length === 0)
-    return this.numberyStrings;
-    else if (this.NaNyStrings.length === 0 && this.numberyStrings.length !== 0){
-      function checkZero(num) {return (num == 0)}
-      return this.numberyStrings.filter(checkZero);
-    }else if (this.NaNyStrings.length !== 0 && this.numberyStrings.length !== 0){
-        function checkZero(num) {return (num == 0)}
-        return this.numberyStrings.filter(checkZero);
-    }
+
+    return this.numberyStrings.filter(num => num == 0);
+
+    // if (this.NaNyStrings.length !== 0 && this.numberyStrings.length === 0)
+    // return this.numberyStrings;
+    // else if (this.NaNyStrings.length === 0 && this.numberyStrings.length !== 0){
+    //   function checkZero(num) {return (num == 0)}
+    //   return this.numberyStrings.filter(checkZero);
+    // }else if (this.NaNyStrings.length !== 0 && this.numberyStrings.length !== 0){
+    //     function checkZero(num) {return (num == 0)}
+    //     return this.numberyStrings.filter(checkZero);
+    // }
   },
   numberyAsNumbers: function () {
     return this.numberyStrings.map(str => Number(str)); // in one line
