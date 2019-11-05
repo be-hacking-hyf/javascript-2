@@ -1,3 +1,6 @@
+## Week1 Practice Exercises Link
+    week-1-project/practice-problems/index.html
+
 ## Week 1 Project
 
 The weekly projects in JS 2 will be making an even stronger distinction between your core application and the user interface.   To help you with this transition there will be two assignment tables, one for the core app object and another for the user interface.
