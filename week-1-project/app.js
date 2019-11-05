@@ -34,7 +34,7 @@ const object = {
     // write me!
   },
   sumOfNumbery: function () {
-    // write me!
+    // write me! (using a Array.prototype.reduce())
   },
   sumOfNaNy: function () {
     // write me!
