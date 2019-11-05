@@ -169,7 +169,9 @@ try {
 
     const obj = {
       array: [3],
-      mergeArrays: function (arrToMerge) { }
+      mergeArrays: function (arrToMerge) {
+        return this.array = [...this.array, ...arrToMerge];
+       }
     }
 
     obj.mergeArrays([2]);
@@ -195,7 +197,9 @@ try {
 
     const obj = {
       mixer: '',
-      remix: function (str) { }
+      remix: function (str) { 
+          return str.split('').join(this.mixer);
+      }
     };
 
     console.assert(obj.remix('hello') === 'hello', 'assert 1');
@@ -219,8 +223,10 @@ try {
     const obj = {
       mixer: '',
       remixed: '',
-      remix: function (str) { },
-      getRemixed: function () { }
+      remix: function (str) { 
+        this.remixed = str.split('').join(this.mixer);
+      },
+      getRemixed: function () {return this.remixed}
     };
 
     obj.remix('hello');
