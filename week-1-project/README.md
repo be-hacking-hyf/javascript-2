@@ -1,5 +1,7 @@
 ## Week1 Practice Exercises Link
-    week-1-project/practice-problems/index.html
+    <p>Please follow the link below to open the practice exercises of Week1 project</p> 
+
+<a href="https://mert1980.github.io/HTML-CSS-GitHub/homework/week-3-project/home.html">Practice Exercises Week1</a><br><br>
 
 ## Week 1 Project
 
