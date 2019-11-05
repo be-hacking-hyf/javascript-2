@@ -21,8 +21,8 @@ describe(`findByKey: returns the requested key/value pair, or an informative err
     ['a', 'b', 'c', 'd'].forEach(arg => {
       it(`${arg}`, () => {
         const result = object.findByKey(arg);
-        assert.ok(result[arg] instanceof ReferenceError);
-        assert.strictEqual(result[arg].message, `findByKey: no property "${arg}" in this.entries`);
+        assert.ok(result instanceof ReferenceError);
+        assert.strictEqual(result.message, `findByKey: no property "${arg}" in this.entries`);
       });
     });
   });
