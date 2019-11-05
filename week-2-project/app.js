@@ -8,6 +8,9 @@
   - and users can access & modify that data
 */
 
+
+
+
 const object = {
   entries: {},
   isPrimitive: function (value) {
@@ -27,7 +30,7 @@ const object = {
       return new TypeError('addEntry: value should be a primitive');
     }
     if (null) { // write me! (using this.hasKey)
-      return { [key]: new Error(`addEntry: key "${key}" already exists`) };
+      return new Error(`addEntry: key "${key}" already exists`);
     }
 
     // write me!
@@ -37,7 +40,7 @@ const object = {
       return new TypeError('removeEntry: key should be a string');
     }
     if (null) { // write me! (using this.hasKey)
-      return { [key]: new ReferenceError(`removeEntry: no property "${key}" in this.entries`) };
+      return new ReferenceError(`removeEntry: no property "${key}" in this.entries`);
     }
 
     // write me!
@@ -50,7 +53,7 @@ const object = {
       return new TypeError('updateEntry: value should be a primitive');
     }
     if (null) { // write me! (using this.hasKey)
-      return { [key]: new ReferenceError(`updateEntry: no property "${key}" in this.entries`) };
+      return new ReferenceError(`updateEntry: no property "${key}" in this.entries`);
     }
 
     // write me!
@@ -63,7 +66,7 @@ const object = {
       return new TypeError('findByKey: key should be a string');
     }
     if (null) { // write me! (using this.hasKey)
-      return { [key]: new ReferenceError(`findByKey: no property "${key}" in this.entries`) };
+      return new ReferenceError(`findByKey: no property "${key}" in this.entries`);
     }
 
     // write me!

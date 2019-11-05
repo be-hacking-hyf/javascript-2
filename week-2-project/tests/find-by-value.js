@@ -31,7 +31,7 @@ describe(`findByValue: returns the requested key/value pair, or an informative e
       });
     });
   });
-  describe(`otherwise returns an object containing the requested key/value pair`, () => {
+  describe(`otherwise returns an object containing the requested key/value pairs`, () => {
     [
       ['firstValue', { firstKey: 'firstValue' }],
       ['secondValue', { secondKey: 'secondValue' }],
@@ -44,11 +44,19 @@ describe(`findByValue: returns the requested key/value pair, or an informative e
     });
     it(`it finds all keys containing "fourthValue"`, () => {
       const result = object.findByValue('fourthValue');
-      assert.deepStrictEqual(Object.keys(result), ['fourthKey', 'fifthKey', 'sixthKey']);
+      assert.deepStrictEqual(result, {
+        fourthKey: 'fourthValue',
+        fifthKey: 'fourthValue',
+        sixthKey: 'fourthValue'
+      });
     });
     it(`and all keys containing "fifthValue"`, () => {
       const result = object.findByValue('fifthValue');
-      assert.deepStrictEqual(Object.keys(result), ['seventhKey', 'eighthKey', 'ninthKey']);
+      assert.deepStrictEqual(result, {
+        seventhKey: 'fifthValue',
+        eighthKey: 'fifthValue',
+        ninthKey: 'fifthValue'
+      });
     });
   });
 });
