@@ -1,6 +1,8 @@
+## Week2 Practice Problems Link
+   ### Please follow the link below to open the practice problems of Week2
+<a href="https://mert1980.github.io/javascript-2/week-2-project/practice-problems/index.html">Practice Problems Week2</a><br><br>
 
 ## Week 2 Project
-
 
 
 The weekly projects in JS 2 will be making an even stronger distinction between your core application and the user interface. To help you with this transition there will be two assignment tables, one for the core app object and another for the user interface.
