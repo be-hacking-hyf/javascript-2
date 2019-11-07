@@ -1,4 +1,5 @@
 function callItHandler() {
+
   // read user input
   // notice this: the UI doesn't allow you to enter invalid types!
 
@@ -54,8 +55,9 @@ function callItHandler() {
   console.log('methodName:', typeof methodName, ',', methodName);
   console.log('args:', typeof args, ',', args);
   console.log('result:', typeof result, ',', result);
-
 }
+
+
 const callItButton = document.getElementById('call-it');
 callItButton.addEventListener('click', callItHandler);
 // connect this to it's button with an event listener!        <----------

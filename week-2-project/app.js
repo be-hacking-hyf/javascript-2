@@ -19,14 +19,19 @@ const object = {
   },
   hasKey: function (obj, key) {
     let keyList = Object.keys(obj);
-      if(keyList.length > 0){
+      if(keyList.length >= 0){
         if(keyList.includes(key)){return true}
         else {return false}
     }
   }, 
   hasValue: function (obj, value) {
-    if(Object.values(obj).includes(value)) {return true};
-    return false;
+    let valueList = Object.values(obj);
+      if(valueList.length >= 0){
+        if(valueList.includes(value)){return true}
+        else {return false}
+    // if(Object.values(obj).includes(value)) {return true};
+    // return false;
+      }
   },
   addEntry: function (key, value) {
     if (typeof key !== 'string') { // write me!
@@ -50,46 +55,51 @@ const object = {
     if (!this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
       return new ReferenceError(`removeEntry: no property "${key}" in this.entries`);
     }
-    else {
-          delete this.entries[key];
-          return true;
-      }
+     delete this.entries[key];
+     return true;
+    
   },
   
   updateEntry: function (key, value) {
-    if (null) { // write me!
+    if (typeof key !== 'string') { // write me!
       return new TypeError('updateEntry: key should be a string');
     }
-    if (null) { // write me! (using this.isPrimitive)
+    if (!this.isPrimitive(value)) { // write me! (using this.isPrimitive)
       return new TypeError('updateEntry: value should be a primitive');
     }
-    if (null) { // write me! (using this.hasKey)
+    if (!this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
       return new ReferenceError(`updateEntry: no property "${key}" in this.entries`);
     }
 
+     else {this.entries[key] = value;
+          return true;}
     // write me!
   },
   readAll: function () {
-    // write me!
+    // return this.entries;
+    var clonedObj = {...this.entries};
+    return clonedObj;
   },
   findByKey: function (key) {
-    if (null) { // write me!
+    if (typeof key !== 'string') { // write me!
       return new TypeError('findByKey: key should be a string');
     }
-    if (null) { // write me! (using this.hasKey)
+    if (!this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
+      console.log('haskey');
       return new ReferenceError(`findByKey: no property "${key}" in this.entries`);
     }
-
-    // write me!
+    var newObj = {};
+    newObj[key] = this.entries[key];
+    return newObj;
+    
   },
   findByValue: function (value) {
-    if (null) { // write me! (using this.isPrimitive)
+    if (typeof key !== 'string') { // write me! (using this.isPrimitive)
       return new TypeError('findByValue: value should be a primitive');
     }
-    if (null) { // write me! (using this.hasValue)
+    if (!this.hasValue(this.entries, value)) { // write me! (using this.hasValue)
       return new ReferenceError(`findByValue: no entry with value (${typeof value}, ${value})`);
     }
-
-    // write me! (this one is a bit trickier)
+    
   },
 }
