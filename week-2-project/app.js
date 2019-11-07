@@ -14,37 +14,48 @@
 const object = {
   entries: {},
   isPrimitive: function (value) {
-    // write me!
+    if (Object(value) !== value) {return true};
+    return false; 
   },
   hasKey: function (obj, key) {
-    // write me!
-  },
+    let keyList = Object.keys(obj);
+      if(keyList.length > 0){
+        if(keyList.includes(key)){return true}
+        else {return false}
+    }
+  }, 
   hasValue: function (obj, value) {
-    // write me!
+    if(Object.values(obj).includes(value)) {return true};
+    return false;
   },
   addEntry: function (key, value) {
-    if (null) { // write me!
+    if (typeof key !== 'string') { // write me!
       return new TypeError('addEntry: key should be a string');
     }
-    if (null) { // write me! (using this.isPrimitive)
+    if (!this.isPrimitive(value)) { // write me! (using this.isPrimitive)
       return new TypeError('addEntry: value should be a primitive');
     }
-    if (null) { // write me! (using this.hasKey)
-      return new Error(`addEntry: key "${key}" already exists`);
-    }
 
-    // write me!
-  },
+    if (this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
+      return new Error(`addEntry: key "${key}" already exists`);
+    } 
+
+    else {this.entries[key] = value;
+          return true;}
+    },
   removeEntry: function (key) {
-    if (null) { // write me!
+    if (typeof key !== 'string') { // write me!
       return new TypeError('removeEntry: key should be a string');
     }
-    if (null) { // write me! (using this.hasKey)
+    if (!this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
       return new ReferenceError(`removeEntry: no property "${key}" in this.entries`);
     }
-
-    // write me!
+    else {
+          delete this.entries[key];
+          return true;
+      }
   },
+  
   updateEntry: function (key, value) {
     if (null) { // write me!
       return new TypeError('updateEntry: key should be a string');
