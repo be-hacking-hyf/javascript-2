@@ -13,6 +13,7 @@
 
 const object = {
   entries: {},
+  
   isPrimitive: function (value) {
     if (Object(value) !== value) {return true};
     return false; 
@@ -88,10 +89,14 @@ const object = {
       console.log('haskey');
       return new ReferenceError(`findByKey: no property "${key}" in this.entries`);
     }
-    var newObj = {};
+    const newObj = {};
     newObj[key] = this.entries[key];
     return newObj;
     
+  },
+  copyEntries: function() {
+      let copied = this.entries;
+      return copied;
   },
   findByValue: function (value) {
     if (typeof key !== 'string') { // write me! (using this.isPrimitive)
@@ -100,6 +105,10 @@ const object = {
     if (!this.hasValue(this.entries, value)) { // write me! (using this.hasValue)
       return new ReferenceError(`findByValue: no entry with value (${typeof value}, ${value})`);
     }
-    
+    let copiedEntries = this.copyEntries();
+    let newKey = Object.keys(copiedEntries).find(keyOfValue => copiedEntries[keyOfValue] === value);
+    let requestedObj={};
+        requestedObj[newKey]=value;
+    return requestedObj;
   },
 }

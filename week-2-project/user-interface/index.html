@@ -1,69 +1,63 @@
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>week 2 project UI</title>
+    <meta name="description" content="week 2 project UI" />
 
-<head>
-  <meta charset="utf-8">
-  <title>week 2 project UI</title>
-  <meta name="description" content="week 2 project UI">
+    <script src="../app.js"></script>
 
-  <script src="../app.js"></script>
+    <script src="./views/render-error.js"></script>
+    <script src="./views/render-object.js"></script>
 
+    <script src="./scripts/type-caster.js"></script>
+  </head>
 
-  <script src='./views/render-error.js'></script>
-  <script src='./views/render-object.js'></script>
+  <body>
+    <section id="inputs" style="display: flex; flex-direction: row;">
+      <div>
+        <text>key</text><br />
+        <input id="key" placeholder="enter key" />
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <text>value</text><br />
+        <textarea id="value-value" placeholder="enter value"></textarea>
+        <select id="value-type">
+          <option value="string">string</option>
+          <option value="number">number</option>
+          <option value="boolean">boolean</option>
+          <option value="object">null</option>
+          <option value="undefined">undefined</option>
+        </select>
+      </div>
+    </section>
+    <br />
+    <section id="method-select">
+      <fieldset>
+        <legend>Which method do you want to call?</legend>
+        <label>object.</label>
+        <select id="method-name">
+          <option value="addEntry">addEntry(key, value)</option>
+          <option value="removeEntry">removeEntry(key)</option>
+          <option value="updateEntry">updateEntry(key, value)</option>
+          <option value="readAll">readAll()</option>
+          <option value="findByKey">findByKey(key)</option>
+          <option value="findByValue">findByValue(value)</option>
+        </select>
+        <button id="call-it">call it!</button>
+      </fieldset>
+    </section>
+    <br />
+    <section id="entries-display">
+      <h2>Entries</h2>
+    </section>
+    <div id="display-zone"></div>
 
-  <script src="./scripts/type-caster.js"></script>
-</head>
+    <br />
+    <br />
 
-<body>
+    <!-- <button onclick='window.close()' on>back to main page</button> -->
+    <a href="../index.html">back to index</a>
 
-  <section id='inputs' style='display: flex; flex-direction: row;'>
-    <div>
-      <text>key</text><br>
-      <input id='key' placeholder="enter key" />
-    </div>
-    <div style='display: flex; flex-direction: column;'>
-      <text>value</text><br>
-      <textarea id='value-value' placeholder="enter value"></textarea>
-      <select id='value-type'>
-        <option value="string">string</option>
-        <option value="number">number</option>
-        <option value="boolean">boolean</option>
-        <option value="object">null</option>
-        <option value="undefined">undefined</option>
-      </select>
-    </div>
-  </section>
-  <br>
-  <section id='method-select'>
-    <fieldset>
-      <legend>Which method do you want to call?</legend>
-      <label>object.</label>
-      <select id="method-name">
-        <option value="addEntry">addEntry(key, value)</option>
-        <option value="removeEntry">removeEntry(key)</option>
-        <option value="updateEntry">updateEntry(key, value)</option>
-        <option value="readAll">readAll()</option>
-        <option value="findByKey">findByKey(key)</option>
-        <option value="findByValue">findByValue(value)</option>
-      </select>
-      <button id='call-it'>call it!</button>
-    </fieldset>
-  </section>
-  <br>
-  <section id='entries-display'>
-    <h2>Entries</h2>
-  </section>
-      <div id='display-zone'>
-
-  </div>
-
-  <br>
-  <br>
-
-  <!-- <button onclick='window.close()' on>back to main page</button> -->
-  <a href='../index.html'>back to index</a>
-
-  <script src='./handlers/call-it.js'></script>
-</body>
-
+    <script src="./handlers/call-it.js"></script>
+  </body>
 </html>
