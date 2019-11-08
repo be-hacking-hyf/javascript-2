@@ -30,8 +30,8 @@ describe(`updateEntry: should add a new key/value pair to this.entries`, () => {
     ['tomato', 'potato', 'patate', 'pomme'].forEach(arg => {
       it(`${arg}`, () => {
         const result = object.updateEntry(arg, '');
-        assert.ok(result[arg] instanceof ReferenceError);
-        assert.strictEqual(result[arg].message, `updateEntry: no property "${arg}" in this.entries`);
+        assert.ok(result instanceof ReferenceError);
+        assert.strictEqual(result.message, `updateEntry: no property "${arg}" in this.entries`);
       });
     });
   });

@@ -1,3 +1,5 @@
+// ** doesn't do nicely with lots of comments in a method
+
 /* opinionated & lazy formatting
 
   assumes double-spaced indentation

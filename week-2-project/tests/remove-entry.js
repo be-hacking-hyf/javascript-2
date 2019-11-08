@@ -21,8 +21,8 @@ describe(`removeEntry: should remove a key/value pair from this.entries`, () => 
     ['tomato', 'potato', 'patate', 'pomme de terre'].forEach(arg => {
       it(`${arg}`, () => {
         const result = object.removeEntry(arg);
-        assert.ok(result[arg] instanceof Error);
-        assert.strictEqual(result[arg].message, `removeEntry: no property "${arg}" in this.entries`);
+        assert.ok(result instanceof Error);
+        assert.strictEqual(result.message, `removeEntry: no property "${arg}" in this.entries`);
       });
     });
   });
@@ -38,7 +38,7 @@ describe(`removeEntry: should remove a key/value pair from this.entries`, () => 
   describe(`... and actually removes the entries!`, () => {
     valuesToRemove.forEach(arg => {
       it(`object.hasKey(object.entries, ${arg}) === false`, () => {
-        assert.strictEqual(object.hasKey(object.entries, arg), false);
+        assert.strictEqual(this.entries.hasOwnProperty(arg), false);
       });
     });
   });

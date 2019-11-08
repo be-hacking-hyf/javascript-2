@@ -14,54 +14,82 @@
 
 <body>
 
-  <section style='display: flex; flex-direction: row;'>
-    <div>
-      <text>key</text><br>
-      <input id='key' placeholder="enter key" />
-    </div>
-    <div style='display: flex; flex-direction: column;'>
-      <text>value</text><br>
-      <select id='value-type'>
-        <option value="string">string</option>
-        <option value="number">number</option>
-        <option value="boolean">boolean</option>
-        <option value="null">null</option>
-        <option value="undefined">undefined</option>
-      </select>
-      <textarea id='value-value' placeholder="enter value"></textarea>
-    </div>
+  <section id='cruding'>
+    <h3>CRUDing entries</h3>
+    <section style='display: flex; flex-direction: row;'>
+      <div>
+        <text>key</text><br>
+        <input id='key' placeholder="enter key" />
+      </div>
+      <div style='display: flex; flex-direction: column;'>
+        <text>value</text><br>
+        <select id='value-type'>
+          <option value="string">string</option>
+          <option value="number">number</option>
+          <option value="boolean">boolean</option>
+          <option value="null">null</option>
+          <option value="undefined">undefined</option>
+        </select>
+        <textarea id='value-value' placeholder="enter value"></textarea>
+      </div>
+    </section>
+    <br>
+    <section>
+      <fieldset>
+        <legend>Which method do you want to call?</legend>
+        <label>object.</label>
+        <select id="method-name">
+          <option value="addEntry">addEntry(key, value)</option>
+          <option value="removeEntry">removeEntry(key)</option>
+          <option value="updateEntry">updateEntry(key, value)</option>
+          <option value="readAll">readAll()</option>
+          <option value="findByKey">findByKey(key)</option>
+          <option value="findByValue">findByValue(value)</option>
+        </select>
+        <button id='call-it'>call it!</button>
+      </fieldset>
+    </section>
+    <br>
+    <section>
+      <button id='view-sorted-strings'></button>
+    </section>
+    <br>
+    <section id='display-zone' style='display:flex; flex-direction: row;'></section>
+    <br>
   </section>
-  <br>
-  <section>
-    <fieldset>
-      <legend>Which method do you want to call?</legend>
-      <label>object.</label>
-      <select id="method-name">
-        <option value="addEntry">addEntry(key, value)</option>
-        <option value="removeEntry">removeEntry(key)</option>
-        <option value="updateEntry">updateEntry(key, value)</option>
-        <option value="readAll">readAll()</option>
-        <option value="findByKey">findByKey(key)</option>
-        <option value="findByValue">findByValue(value)</option>
-      </select>
-      <button id='call-it'>call it!</button>
-    </fieldset>
+
+  <hr>
+
+  <section id='favoriting'>
+    <h2>favoriting</h2>
+    <section>
+      <input id='favorite-key-input' placeholder="enter a key" />
+    </section>
+    <br>
+    <section>
+      <fieldset>
+        <legend>What do you want to do with this key?</legend>
+        <label>object.</label>
+        <select id="favorites-method-name">
+          <option value=""></option>
+          <!-- make sure users can call all methods! -->
+        </select>
+        <button id='call-it'>call it!</button>
+      </fieldset>
+    </section>
+    <br>
+    <section id='favorites-display-zone' style='display:flex; flex-direction: row;'></section>
   </section>
-  <br>
-  <section>
-    <button id='view-sorted-strings'></button>
-  </section>
-  <br>
-  <section id='display-zone' style='display:flex; flex-direction: row;'></section>
 
   <br>
   <br>
-
+  <hr>
   <button onclick='window.close()' on>back to main page</button>
 
   <script src='./handlers/view-sorted-strings.js'></script>
   <script src='./handlers/add-value.js'></script>
   <script src='./handlers/call-methods.js'></script>
+  <script src='./handlers/favoriting.js'></script>
 </body>
 
 </html>

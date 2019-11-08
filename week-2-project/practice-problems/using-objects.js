@@ -12,8 +12,13 @@ try {
 
     const obj = {
       a: 0,
-      getA: function () { },
-      sumAB: function (b) { },
+      getA: function () {
+        return obj.a;
+       },
+      sumAB: function (b) { 
+        return this.a + b;
+
+      },
     };
 
     console.assert(obj.getA() === 0, '1: obj.getA() should return 0');
@@ -36,8 +41,12 @@ try {
 
     const obj = {
       word: '',
-      getWord: function () { },
-      concat: function (secondHalf) { },
+      getWord: function () {
+        return `the word is ${obj.word}`;
+       },
+      concat: function (secondHalf) { 
+        return this.word + secondHalf;
+      },
     };
 
     console.assert(obj.getWord() === 'the word is ', `1: obj.getWord() should return 'the word is '`);
@@ -59,8 +68,13 @@ try {
 
     const obj = {
       array: ['hi!'],
-      getArray: function () { },
-      getCopy: function () { },
+      getArray: function () {
+        return obj.array
+       },
+      getCopy: function () {
+        let newArr = [...this.array];
+        return newArr;
+       },
     };
 
     const gottenArray1 = obj.getArray();
@@ -94,8 +108,18 @@ try {
 
     const obj = {
       string: '',
-      setString: function (str) { },
-      remixString: function (mixer) { }
+      setString: function (str) {
+        return this.string = str;
+       },
+
+      remixString: function (mixer) {
+        let arr = this.string.split('');
+        let a = arr.length;
+        for (let i=1; i<2*a-1; i+=2){
+          arr.splice(i, 0, mixer);              
+        }
+        this.string = arr.join('');        
+       },
     }
 
     obj.setString('hoy');
@@ -129,8 +153,13 @@ try {
       number: 5,
       mod: 0,
       equals: 0,
-      setNumber: function (num) { },
-      modulo: function (modder) { }
+      setNumber: function (num) {
+        this.number = num;
+       },
+      modulo: function (modder) {
+        this.equals = this.number % modder;
+        this.mod = modder;
+       }
     };
 
     obj.modulo(2);
@@ -162,8 +191,14 @@ try {
 
     const obj = {
       arr: [1, 0],
-      merge: function (toMerge) { },
-      replace: function (newArr) { },
+      merge: function (toMerge) { 
+        this.arr = [...toMerge,...this.arr];
+      },
+      replace: function (newArr) {
+        for (let i=0; i<newArr.length; i++) {
+          this.arr[i] = newArr[i];
+        }
+       },
     };
 
     obj.merge([4]);
@@ -196,10 +231,24 @@ try {
 
     const obj = {
       arr: [],
-      merge: function (toMerge) { },
-      replaceAll: function (newEntry) { },
-      getRemixed: function (mixer) { },
-      getCopy: function () { }
+      merge: function (toMerge) { 
+        this.arr = [...toMerge,...this.arr];
+      },
+      replaceAll: function (newEntry) { 
+        this.arr = this.arr.map(e => newEntry);
+      },
+      getRemixed: function (mixer) {
+        let a = this.arr.length; 
+        let b = [...this.arr];
+        for (let i =1; i<2*a-1; i+=2) {
+          b.splice(i, 0, mixer);
+        }
+        return b.join('');
+      },
+      getCopy: function () {
+        let copyArr = [...this.arr];
+        return copyArr;
+       }
     };
 
     obj.merge([1, 2]);
@@ -232,11 +281,26 @@ try {
 
     const obj = {
       entries: {},
-      newEntry: function (key, value) { },
-      readEntry: function (key) { },
-      updateEntry: function (key, newValue) { },
-      deleteEntry: function (key) { },
-      readAll: function () { }
+      newEntry: function (key, value) { 
+        this.entries[key] = value;
+        return value;
+      },
+      readEntry: function (key) {
+       let a = this.entries[key];
+       return a;
+       },
+      updateEntry: function (key, newValue) {
+        this.entries[key] = newValue;
+        return this.entries[key];
+       },
+      deleteEntry: function (key) { 
+        delete this.entries[key];
+        return true;
+      },
+      readAll: function () {
+        let copyArr = [...this.entries];
+        return copyArr;
+       }
     };
 
     console.assert(obj.newEntry('a', 0) === 0, 'assert 1');
