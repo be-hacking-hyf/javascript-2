@@ -19,22 +19,27 @@ const object = {
     return false; 
   },
   hasKey: function (obj, key) {
-    return (obj.hasOwnProperty(key));
-
+    return (obj.hasOwnProperty(key)); // SINGLE LINE SOLUTION
+    
+    // AlTERNATIVE SOLUTION //
     // let keyList = Object.keys(obj);
     //   if(keyList.length >= 0){
-    //     if(keyList.includes(key)){return true}
+    //    if(keyList.includes(key)){return true}
     //     else {return false}
     // }
   }, 
   hasValue: function (obj, value) {
-    return (Object.values(obj).indexOf(value) > -1);
+    return (Object.values(obj).indexOf(value) > -1); // SINGLE LINE SOLUTION
+   
+    // AlTERNATIVE SOLUTION-1 //
     // let valueList = Object.values(obj);
     //   if(valueList.length >= 0){
     //     if(valueList.includes(value)){return true}
     //     else {return false}
+
+    // AlTERNATIVE SOLUTION-2 //
     // if(Object.values(obj).includes(value)) {return true};
-    // return false;
+    //    return false;
       
   },
   addEntry: function (key, value) {
@@ -47,9 +52,7 @@ const object = {
 
     if (this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
       return new Error(`addEntry: key "${key}" already exists`);
-    } 
-
-    else {this.entries[key] = value;
+    } else {this.entries[key] = value;
           return true;}
     },
   removeEntry: function (key) {
@@ -73,15 +76,11 @@ const object = {
     }
     if (!this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
       return new ReferenceError(`updateEntry: no property "${key}" in this.entries`);
-    }
-
-     else {this.entries[key] = value;
+    }  else {this.entries[key] = value;
           return true;}
-    // write me!
   },
   readAll: function () {
-    // return this.entries;
-    var clonedObj = {...this.entries};
+    let clonedObj = {...this.entries};
     return clonedObj;
   },
   findByKey: function (key) {
@@ -97,15 +96,12 @@ const object = {
     return newObj;
     
   },
-  copyEntries: function() {
-      let copied = {...this.entries};
-      return copied;
-  },
-  findByValue: function (value) {
-    if (typeof key !== 'string') { // write me! (using this.isPrimitive)
+  // THIS METHOD SHOULD PASS THE TEST CASES, BECAUSE IT PASSES THE TEST CASES IN PRACTICE PROBLEMS
+  findByValue: function (value) {  
+    if (typeof key !== 'string') { // (using this.isPrimitive)
       return new TypeError('findByValue: value should be a primitive');
     }
-    if (!this.hasValue(this.entries, value)) { // write me! (using this.hasValue)
+    if (!this.hasValue(this.entries, value)) { // (using this.hasValue)
         return new ReferenceError(`findByValue: no entry with value (${typeof value}, ${value})`);
     }
     
@@ -122,7 +118,6 @@ const object = {
       expectedObj[keyArr[i]]=value;
       }
       return expectedObj;
-    // (remember to avoid side effects)
-  }
-},
+    }
+  },
 }
