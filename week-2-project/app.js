@@ -52,8 +52,14 @@ const object = {
       return new ReferenceError(`removeEntry: no property "${key}" in this.entries`);
     }
 
+<<<<<<< HEAD
     delete this.entries[key];
     return true;
+=======
+    delete this.entries[key]
+    return true
+    // write me!
+>>>>>>> 79a9c4840aea08e71d6dd8172b84e1e0bb51a4c7
   },
 
   updateEntry: function (key, value) {

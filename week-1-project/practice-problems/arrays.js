@@ -1,4 +1,4 @@
-// https://www.youtube.com/watch?v=W1NTK09o-vM&list=PLzV58Zm8FuBJFfQN5il3ujx6FDAY8Ds3u&index=4    
+// https://www.youtube.com/watch?v=W1NTK09o-vM&list=PLzV58Zm8FuBJFfQN5il3ujx6FDAY8Ds3u&index=4
 // https://medium.com/@naveenkarippai/learning-how-references-work-in-javascript-a066a4e15600
 
 {
@@ -35,6 +35,7 @@ try {
 
 
     // to create a new array in memory, you must write new square brackets
+    // (or call an array method that returns a copy, more on that later)
     const array3 = [];
     // reassigning object2 will make it point to ...
     array2 = array3;
