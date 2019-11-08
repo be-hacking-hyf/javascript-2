@@ -51,10 +51,15 @@ const object = {
     return arr;
     // write me!
   },
+<<<<<<< HEAD
   NaNyAsNumbers: function (param) {
     let arr = this.NaNyStrings.map(e => Number(e));
     return arr;
     // write me!
+=======
+  sumOfNumbery: function () {
+    // write me! (using a Array.prototype.reduce())
+>>>>>>> d6c2c3ca9c538f289536279768662d3f3fa37def
   },
   sumOfNumbery: function (param) {
    let sum = 0;
