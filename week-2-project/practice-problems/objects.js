@@ -116,32 +116,44 @@ try {
   function passTheAssertions1() {
     ; // declare and assign a1
     ; // declare and assign a2
+    const a1={}
+    const a2= a1
+    //burada yazdigin altta istenen esitli ya da esitsiz olan haller, a1 ile a2 birbirine esit
+    
     console.assert(a1 === a2, 'a1 should strictly equal a2');
 
     ; // declare and assign b1
     ; // declare and assign b2
+    const b1={}
+    const b2={}// burada yazdigin seyler altta istenen esitlik ya da esitsizlikler
     console.assert(b1 !== b2, 'b1 should not strictly equal b2');
 
     // ---
 
     ; // write one line to pass the assertions
+    a1.x === 'hi';
     console.assert(a1.x === a2.x, 'a1.x should strictly equal a2.x');
     console.assert(a1.x === 'hi!', 'a1.x should strictly equal "hi!"');
 
     ; // write two lines to pass the assertions
     ;
+    b1.x=== 'bye!';
+    b2.x==='bye!';
     console.assert(b1.x === b2.x, 'b1.x should strictly equal b2.x');
     console.assert(b1.x === 'bye!', 'b1.x should strictly equal "bye!"');
 
     // --
     const index = 'y';
-
+    a2[index]==='roof!';
+    a2[index]===a1[index];
     ; // write one line to pass the assertions
     console.assert(a1[index] === a2[index], 'a1[index] should strictly equal a2[index]');
     console.assert(a1[index] === 'roof!', 'a1[index] should strictly equal "roof!"');
 
     ; // write two lines to pass the assertions
     ;
+    b2[index] === b1[index];
+    b1[index]==='floor!';
     console.assert(b1[index] === b2[index], 'b1[index] should strictly equal b2[index]');
     console.assert(b1[index] === 'floor!', 'b1[index] should strictly equal "floor!"');
 
@@ -153,6 +165,7 @@ try {
   function passTheAssertions2() {
     const value1 = 5;
     let reference1 = {};
+    
 
     ; // write this line
     console.assert(value2 === value1, "value1 should strictly equal value2");

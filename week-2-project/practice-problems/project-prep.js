@@ -22,6 +22,8 @@ try {
   ];
   function isPrimitive(thing) {
     // write me!
+      var type = typeof thing;
+      return thing == null || (type != "object" && type != "function");
   }
   isPrimitive.display = true;
   evaluate(isPrimitive, isPrimitiveTests);
@@ -38,13 +40,16 @@ try {
   ];
   function hasKey(obj, key) {
     // write me!
-  }
+    return obj != null && hasOwnProperty.call(obj, key);
+ // return (Object.values(obj).indexOf(values) > -1);
+}
+
   hasKey.display = true;
   evaluate(hasKey, hasKeyTests);
 
 
   const hasValueTests = [
-    { name: 'first', args: [{ a: 0 }, 0], expected: true },
+    { name: 'first', args: [{ a:/*key*/ 0/* value*/ }, 0], expected: true },
     { name: 'second', args: [{ b: 0 }, 1], expected: false },
     { name: 'third', args: [{ a: 1 }, 0], expected: false },
     { name: 'fourth', args: [{ b: 1 }, 1], expected: true },
@@ -55,6 +60,8 @@ try {
   function hasValue(obj, value) {
     // write me!
     // consider using Object.keys, .filter and obj.hasOwnProperty
+  
+return (Object.values(obj).indexOf(value)> -1);
   }
   hasValue.display = true;
   evaluate(hasValue, hasValueTests);
@@ -88,6 +95,9 @@ try {
   function deleteFromObject(obj, key) {
     // write me!
     // (remember to avoid side effects)
+   
+    
+delete deleteFromObject(obj);
   }
   deleteFromObject.display = true;
   evaluate(deleteFromObject, deleteFromObjectTests)
@@ -104,6 +114,7 @@ try {
   function findByKey(obj, key) {
     // write me!
     // (remember to avoid side effects)
+   
   }
   findByKey.display = true;
   evaluate(findByKey, findByKeyTests)
