@@ -19,20 +19,23 @@ const object = {
     return false; 
   },
   hasKey: function (obj, key) {
-    let keyList = Object.keys(obj);
-      if(keyList.length >= 0){
-        if(keyList.includes(key)){return true}
-        else {return false}
-    }
+    return (obj.hasOwnProperty(key));
+
+    // let keyList = Object.keys(obj);
+    //   if(keyList.length >= 0){
+    //     if(keyList.includes(key)){return true}
+    //     else {return false}
+    // }
   }, 
   hasValue: function (obj, value) {
-    let valueList = Object.values(obj);
-      if(valueList.length >= 0){
-        if(valueList.includes(value)){return true}
-        else {return false}
+    return (Object.values(obj).indexOf(value) > -1);
+    // let valueList = Object.values(obj);
+    //   if(valueList.length >= 0){
+    //     if(valueList.includes(value)){return true}
+    //     else {return false}
     // if(Object.values(obj).includes(value)) {return true};
     // return false;
-      }
+      
   },
   addEntry: function (key, value) {
     if (typeof key !== 'string') { // write me!
@@ -50,6 +53,7 @@ const object = {
           return true;}
     },
   removeEntry: function (key) {
+      
     if (typeof key !== 'string') { // write me!
       return new TypeError('removeEntry: key should be a string');
     }
@@ -58,7 +62,6 @@ const object = {
     }
      delete this.entries[key];
      return true;
-    
   },
   
   updateEntry: function (key, value) {
@@ -95,7 +98,7 @@ const object = {
     
   },
   copyEntries: function() {
-      let copied = this.entries;
+      let copied = {...this.entries};
       return copied;
   },
   findByValue: function (value) {
@@ -103,12 +106,23 @@ const object = {
       return new TypeError('findByValue: value should be a primitive');
     }
     if (!this.hasValue(this.entries, value)) { // write me! (using this.hasValue)
-      return new ReferenceError(`findByValue: no entry with value (${typeof value}, ${value})`);
+        return new ReferenceError(`findByValue: no entry with value (${typeof value}, ${value})`);
     }
-    let copiedEntries = this.copyEntries();
-    let newKey = Object.keys(copiedEntries).find(keyOfValue => copiedEntries[keyOfValue] === value);
-    let requestedObj={};
-        requestedObj[newKey]=value;
-    return requestedObj;
-  },
+    
+    let expectedObj = {};
+    const copiedObj = {...this.entries};
+    let keyArr = Object.keys(copiedObj).filter(element => copiedObj[element] === value);
+    if(keyArr.length===0){
+      return {};
+    }else if (keyArr.length===1){
+      expectedObj[key]=value;
+      return expectedObj;
+    }else if (keyArr.length>1){
+      for (let i=0 ; i < keyArr.length ; i++ ) {
+      expectedObj[keyArr[i]]=value;
+      }
+      return expectedObj;
+    // (remember to avoid side effects)
+  }
+},
 }
