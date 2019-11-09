@@ -12,8 +12,8 @@ try {
 
     const obj = {
       a: 0,
-      getA: function () { },
-      sumAB: function (b) { },
+      getA: function () {return this.a },
+      sumAB: function (b) {return this.a +b },
     };
 
     console.assert(obj.getA() === 0, '1: obj.getA() should return 0');
@@ -36,8 +36,14 @@ try {
 
     const obj = {
       word: '',
-      getWord: function () { },
-      concat: function (secondHalf) { },
+      getWord: function () { 
+        if (typeof this.word === 'string'){
+          return "the word is " + this.word
+        }else {
+          return this.word;   
+        }     
+         },
+      concat: function (secondHalf) { return this.word.concat(secondHalf) },
     };
 
     console.assert(obj.getWord() === 'the word is ', `1: obj.getWord() should return 'the word is '`);
@@ -94,8 +100,8 @@ try {
 
     const obj = {
       string: '',
-      setString: function (str) { },
-      remixString: function (mixer) { }
+      setString: function (str) { this.string = str},
+      remixString: function (mixer) { this.string = this.string.split('').join(mixer) }
     }
 
     obj.setString('hoy');
