@@ -18,10 +18,10 @@
   <script src="../dependencies/assert.js"></script>
 
   <!-- why won't local parser-babylon work -->
-  <script src="../dependencies/prettier/standalone.js"></script>
+  <!-- <script src="../dependencies/prettier/standalone.js"></script> -->
   <!-- <script src="https://unpkg.com/prettier@1.13.0/standalone.js"></script> -->
   <!-- <script src="../dependencies/prettier/parser-babylon.js"></script> -->
-  <script src="https://unpkg.com/prettier@1.13.0/parser-babylon.js"></script>
+  <!-- <script src="https://unpkg.com/prettier@1.13.0/parser-babylon.js"></script> -->
 
   <script src="./app.js"></script>
 
@@ -30,7 +30,7 @@
 <body>
 
   <header style='display:flex; flex-direction: row;'>
-    <h2>Week 2 Project</h2>
+    <h2>Week 3 Project</h2>
     <div style="padding-top:20px; padding-left:15px;">
       <a href='./practice-problems/index.html' target='_blank'><button>practice problems</button></a>
       <a href='./user-interface/index.html' target='_blank'><button>user inteface</button></a>
@@ -42,21 +42,24 @@
   <section id='code and tests' style='height:90vh; display:flex; flex-direction: row;'>
 
     <div id='code side' style='width:50%;max-height:100%;overflow-y:scroll'>
-      <pre style='font-size:80%;'><code id='object-code' class="language-js"></code></pre>
+      <pre style='font-size:80%;'><code id='object-code' class="line-numbers language-js"></code></pre>
       <script>
         let appToString = toVariableString(object);
-        try {
-          appToString = prettier.format(
-            appToString,
-            {
-              parser: "babylon",
-              plugins: prettierPlugins
-            }
-          )
-        } catch (err) { }
+        // try {
+        //   appToString = prettier.format(
+        //     appToString,
+        //     {
+        //       parser: "babylon",
+        //       plugins: prettierPlugins
+        //     }
+        //   )
+        // } catch (err) { }
+        console.log(appToString)
 
         const objectCode = document.getElementById('object-code');
-        objectCode.innerHTML = appToString;
+        const newTextNode = document.createTextNode(appToString);
+        objectCode.innerHTML = null;
+        objectCode.appendChild(newTextNode);
         Prism.highlightAllUnder(objectCode);
       </script>
     </div>

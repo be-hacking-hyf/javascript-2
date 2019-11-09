@@ -30,8 +30,8 @@ describe(`addEntry: should add a new key/value pair to this.entries`, () => {
     ['firstKey', 'secondKey', 'thirdKey', 'fourthKey'].forEach(arg => {
       it(`${arg}`, () => {
         const result = object.addEntry(arg, '');
-        assert.ok(result[arg] instanceof Error);
-        assert.strictEqual(result[arg].message, `addEntry: key "${arg}" already exists`);
+        assert.ok(result instanceof Error);
+        assert.strictEqual(result.message, `addEntry: key "${arg}" already exists`);
       });
     });
   });

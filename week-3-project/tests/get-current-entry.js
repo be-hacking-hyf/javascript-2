@@ -21,4 +21,18 @@ describe(`get currentEntry: get the value of this.currentKey if the argument is 
       });
     });
   });
+  describe(`if the current entry has been removed, return the key with it's error`, () => {
+    [
+      'firstKey',
+      'secondKey',
+      'thirdKey',
+      'fourthKey',
+    ].forEach(key => {
+      it(`${key}`, () => {
+        delete object.entries[key];
+        object.currentKey = key;
+        assert.deepStrictEqual(object.currentEntry[key].message, `findByKey: no property "${key}" in this.entries`);
+      });
+    });
+  });
 });

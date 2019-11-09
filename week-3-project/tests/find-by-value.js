@@ -37,18 +37,26 @@ describe(`findByValue: returns the requested key/value pair, or an informative e
       ['secondValue', { secondKey: 'secondValue' }],
       ['thirdValue', { thirdKey: 'thirdValue' }],
     ].forEach(arg => {
-      it(`it finds the correct key for ${arg[0]}`, () => {
+      it(`it returns the correct entry for value : ${arg[0]}`, () => {
         const result = object.findByValue(arg[0]);
         assert.deepStrictEqual(result, arg[1]);
       });
     });
-    it(`it finds all keys containing "fourthValue"`, () => {
+    it(`it finds all keys containing "fourthValue ... "`, () => {
       const result = object.findByValue('fourthValue');
-      assert.deepStrictEqual(Object.keys(result), ['fourthKey', 'fifthKey', 'sixthKey']);
+      assert.deepStrictEqual(result, {
+        'fourthKey': 'fourthValue',
+        'fifthKey': 'fourthValue',
+        'sixthKey': 'fourthValue'
+      });
     });
-    it(`and all keys containing "fifthValue"`, () => {
+    it(`... and all keys containing "fifthValue"`, () => {
       const result = object.findByValue('fifthValue');
-      assert.deepStrictEqual(Object.keys(result), ['seventhKey', 'eighthKey', 'ninthKey']);
+      assert.deepStrictEqual(result, {
+        'seventhKey': 'fifthValue',
+        'eighthKey': 'fifthValue',
+        'ninthKey': 'fifthValue'
+      });
     });
   });
 });

@@ -45,18 +45,20 @@
       <pre style='font-size:80%;'><code id='object-code' class="language-js"></code></pre>
       <script>
         let appToString = toVariableString(object);
-        try {
-          appToString = prettier.format(
-            appToString,
-            {
-              parser: "babylon",
-              plugins: prettierPlugins
-            }
-          )
-        } catch (err) { }
+        // try {
+        //   appToString = prettier.format(
+        //     appToString,
+        //     {
+        //       parser: "babylon",
+        //       plugins: prettierPlugins
+        //     }
+        //   )
+        // } catch (err) { }
 
         const objectCode = document.getElementById('object-code');
-        objectCode.innerHTML = appToString;
+        const newTextNode = document.createTextNode(appToString);
+        objectCode.innerHTML = null;
+        objectCode.appendChild(newTextNode);
         Prism.highlightAllUnder(objectCode);
       </script>
     </div>
