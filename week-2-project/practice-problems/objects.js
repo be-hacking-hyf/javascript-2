@@ -137,12 +137,12 @@ try {
     // --
     const index = 'y';
 
-    ; // write one line to pass the assertions
+    a1[index] = 'roof!'; // write one line to pass the assertions
     console.assert(a1[index] === a2[index], 'a1[index] should strictly equal a2[index]');
     console.assert(a1[index] === 'roof!', 'a1[index] should strictly equal "roof!"');
 
-    ; // write two lines to pass the assertions
-    ;
+    b1[index] = 'floor!'; // write two lines to pass the assertions
+    b2[index] = b1[index];
     console.assert(b1[index] === b2[index], 'b1[index] should strictly equal b2[index]');
     console.assert(b1[index] === 'floor!', 'b1[index] should strictly equal "floor!"');
 
@@ -155,33 +155,35 @@ try {
     const value1 = 5;
     let reference1 = {};
 
-    ; // write this line
+    let value2 = value1; // write this line
     console.assert(value2 === value1, "value1 should strictly equal value2");
 
-    ; // write this line
+    let reference2 = reference1; // write this line
     console.assert(reference2 === reference1, "reference1 should strictly equal reference2");
 
     value2 = value2 + 1; // write this line
     console.assert(value1 !== null, "value1 should strictly equal ___");
 
-    ; // write this line
+    reference1.x = reference2.x = 'hi'; // write this line
     console.assert(reference1.x === reference2.x, "references.x should be strictly equal");
     console.assert(reference1.x === 'hi!', "references.x should strictly equal 'hi!'");
 
-    ; // write this line
+    reference1 = reference2; // write this line
     console.assert(reference1 === reference2, "references should be strictly equal");
 
     // remove the object from memory
-    ; // write this line
-    ; // write this line
+   reference1 = null ; // write this line
+   reference2 = null ; // write this line
   }
   evaluate(passTheAssertions2);
 
 
 
   function passTheAssertions3() {
-    ; // write this line
-    ; // write this line
+    let obj1 = {}; 
+    let obj2 = {}; 
+    obj1.y = obj2.y = 'B';
+    obj1.x = obj2.x = 'A';
     console.assert(obj1 !== obj2, 'the variables should not be strictly equal');
     console.assert(obj1.y === obj2.y, 'their first entries should be the same');
     console.assert(obj1.y === 'B', 'obj1.y should be "B"');
