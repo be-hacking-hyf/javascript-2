@@ -8,9 +8,6 @@
   - and users can access & modify that data
 */
 
-
-
-
 const object = {
   entries: {},
   
@@ -29,18 +26,17 @@ const object = {
     // }
   }, 
   hasValue: function (obj, value) {
-    return (Object.values(obj).indexOf(value) > -1); // SINGLE LINE SOLUTION
-   
+    if(Object.values(obj).includes(value)) {return true};
+       return false;
     // AlTERNATIVE SOLUTION-1 //
+    // return (Object.values(obj).indexOf(value) > -1); 
+       
+    // AlTERNATIVE SOLUTION-2 //
     // let valueList = Object.values(obj);
     //   if(valueList.length >= 0){
     //     if(valueList.includes(value)){return true}
     //     else {return false}
-
-    // AlTERNATIVE SOLUTION-2 //
-    // if(Object.values(obj).includes(value)) {return true};
-    //    return false;
-      
+     
   },
   addEntry: function (key, value) {
     if (typeof key !== 'string') { // write me!
@@ -94,30 +90,28 @@ const object = {
     const newObj = {};
     newObj[key] = this.entries[key];
     return newObj;
-    
   },
-  // THIS METHOD SHOULD PASS THE TEST CASES, BECAUSE IT PASSES THE TEST CASES IN PRACTICE PROBLEMS
-  findByValue: function (value) {  
-    if (typeof key !== 'string') { // (using this.isPrimitive)
-      return new TypeError('findByValue: value should be a primitive');
-    }
-    if (!this.hasValue(this.entries, value)) { // (using this.hasValue)
-        return new ReferenceError(`findByValue: no entry with value (${typeof value}, ${value})`);
-    }
-    
-    let expectedObj = {};
-    const copiedObj = {...this.entries};
-    let keyArr = Object.keys(copiedObj).filter(element => copiedObj[element] === value);
-    if(keyArr.length===0){
-      return {};
-    }else if (keyArr.length===1){
-      expectedObj[key]=value;
-      return expectedObj;
-    }else if (keyArr.length>1){
-      for (let i=0 ; i < keyArr.length ; i++ ) {
-      expectedObj[keyArr[i]]=value;
-      }
-      return expectedObj;
-    }
+
+copyEntries: function() {
+  let copied = {...this.entries};
+  return copied;
   },
-}
+
+findByValue: function (value) {
+  if (!this.isPrimitive(value)) { // write me! (using this.isPrimitive)
+  return new TypeError('findByValue: value should be a primitive');
+  }
+  if (!this.hasValue(this.entries, value)) { // write me! (using this.hasValue)
+    return new ReferenceError(`findByValue: no entry with value (${typeof value}, ${value})`);
+    }
+  let copiedEntries = this.copyEntries();
+  let requestedObj={};
+  let newKey = Object.keys(copiedEntries).filter(keyOfValue => copiedEntries[keyOfValue] === value);
+    for (let i = 0; i < newKey.length; i++) {
+      if (this.entries[newKey[i]] === value) {
+        requestedObj[newKey[i]] = value;
+    }
+  }
+   return requestedObj;    
+},
+};
