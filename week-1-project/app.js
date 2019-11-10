@@ -121,13 +121,9 @@ const object = {
     return this.NaNyStrings.map( num => Number(num)); 
   },
   sumOfNumbery: function () {
-<<<<<<< HEAD
     // write me!
     const reducer = (accumulator, currentValue) => Number(accumulator) + Number(currentValue);
     return this.numberyStrings.reduce(reducer, 0);
-=======
-    // write me! (using a Array.prototype.reduce())
->>>>>>> upstream/master
   },
   sumOfNaNy: function () {
     // write me!

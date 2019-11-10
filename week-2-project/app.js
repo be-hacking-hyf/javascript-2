@@ -61,8 +61,8 @@ const object = {
 
     delete this.entries[key];
     return true;
-    }
-     },
+    // write me!
+  },
   updateEntry: function (key, value) {
     if (typeof key !== "string") { // write me!
       return new TypeError('updateEntry: key should be a string');
