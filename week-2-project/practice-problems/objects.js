@@ -135,8 +135,11 @@ try {
     console.assert(b1.x === 'bye!', 'b1.x should strictly equal "bye!"');
 
     // --
-    const index = 'y';
-
+    const index = 'y';  if (!this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
+      return new ReferenceError(`removeEntry: no property "${key}" in this.entries`);
+    }
+     delete this.entries[key];
+     return true;
     a1[index] = 'roof!'; // write one line to pass the assertions
     console.assert(a1[index] === a2[index], 'a1[index] should strictly equal a2[index]');
     console.assert(a1[index] === 'roof!', 'a1[index] should strictly equal "roof!"');
@@ -219,8 +222,7 @@ try {
     const objValues = Object.values(obj);
 
   }
-  evaluate(footnote_objectDotKeysAndValues);
-
+  evaluate(footnote_objectDotKeysAndValue, err);
 } catch (err) {
   console.log(err);
   document.body.appendChild(
