@@ -101,9 +101,9 @@ const object = {
     return this.NaNyStrings.map( str => Number(str)); 
   },
   sumOfNumbery: function () {
-  if (this.NaNyStrings.length !== 0 && this.numberyStrings.length === 0 ) {
-    return 0;
-  } 
+    if (this.NaNyStrings.length !== 0 && this.numberyStrings.length === 0 ) {
+      return 0;
+    } 
     function add(a, b) { return (a + b) };
     return this.numberyAsNumbers().reduce(add);
   },

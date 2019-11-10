@@ -42,4 +42,16 @@ describe(`hasValue: determines if an object has a given value`, () => {
       });
     });
   });
+  describe(`even when there are no entries!`, () => {
+    before(() => {
+      object.entries = {};
+    });
+    ['tomato', null, true, undefined, 4].forEach(arg => {
+      const argString = typeof arg === 'string' ? '"' + arg + '"' : String(arg);
+      it(argString, () => {
+        const result = object.hasValue(object.entries, arg);
+        assert.strictEqual(result, false);
+      });
+    });
+  });
 });

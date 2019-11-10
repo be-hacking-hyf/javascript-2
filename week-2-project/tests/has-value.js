@@ -47,7 +47,8 @@ describe(`hasValue: determines if an object has a given value`, () => {
       object.entries = {};
     });
     ['tomato', null, true, undefined, 4].forEach(arg => {
-      it(arg, () => {
+      const argString = typeof arg === 'string' ? '"' + arg + '"' : String(arg);
+      it(argString, () => {
         const result = object.hasValue(object.entries, arg);
         assert.strictEqual(result, false);
       });
