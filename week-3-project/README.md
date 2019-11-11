@@ -1,6 +1,6 @@
 ## Week3 Practice Problems Link
    ### Please follow the link below to open the practice problems of Week3
-<a href="https://mert1980.github.io/javascript-2/week-3-project/index.html">Practice Problems Week3</a><br><br>
+<a href="https://mert1980.github.io/javascript-2/week-3-project/practice-problems/index.html">Practice Problems Week3</a><br><br>
 
 ## Week 3 Project
 
