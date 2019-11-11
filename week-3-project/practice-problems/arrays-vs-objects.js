@@ -54,10 +54,11 @@ try {
     console.assert(evaluate.compareValues(obj1, obj3), 'obj: same keys/values, same order');
 
     const arr1 = [1, 2, 3];
-    const arr2 = [1, 2, 3];
+    const arr2 = [3, 2, 1];
     const arr3 = [1, 2, 3];
     // do you remember why '===' won't work here?
-    
+    arr2[0]=1;
+    arr2[2]=3;
     console.assert(evaluate.compareValues(arr1, arr2), 'arr: same values, different order');
     // debugger;
     console.assert(evaluate.compareValues(arr1, arr3), 'arr: same values, same order');

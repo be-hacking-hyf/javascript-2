@@ -220,7 +220,8 @@ try {
         // return this.arr;
        },
       replaceAll: function (newEntry) {
-        this.arr = this.arr.map(x=>newEntry);
+        // this.arr = this.arr.map(x=>newEntry);
+          this.arr = this.arr.fill(newEntry);
           // for (let i=0 ; i < this.arr.length ; i++){
           // this.arr[i]=newEntry;
           // }
