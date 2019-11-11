@@ -92,7 +92,7 @@ try {
       let output = new Object();
       output[typeof arg]=result.message;
       return output;
-      } else if (typeof arg === 'number' || typeof arg === 'boolean' || typeof arg === 'string') {
+      } else {
         let output = new Object();
         output[typeof arg]=arg;
         return output;
@@ -120,7 +120,7 @@ try {
       let output = [];
       output[0]=result.message;
       return output;
-      } else if (typeof arg === 'number' || typeof arg === 'boolean' || typeof arg === 'string') {
+      } else {
         let output = [];
         output=[null,arg];
         return output;
