@@ -57,12 +57,11 @@ const object = {
     if (!this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
       return new ReferenceError(`removeEntry: no property "${key}" in this.entries`);
     }
-    else {
-
-    delete this.entries[key];
+     delete this.entries[key];
     return true;
-    // write me!
+    
   },
+    
   updateEntry: function (key, value) {
     if (typeof key !== "string") { // write me!
       return new TypeError('updateEntry: key should be a string');
@@ -86,23 +85,42 @@ const object = {
 
   },
   findByKey: function (key) {
-    if (null) { // write me!
+    if (typeof key !== 'string') { // write me!
       return new TypeError('findByKey: key should be a string');
     }
-    if (null) { // write me! (using this.hasKey)
+    if (!this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
+        console.log('haskey');
       return new ReferenceError(`findByKey: no property "${key}" in this.entries`);
     }
-
-    // write me!
+        
+    const newObj = {};
+    newObj[key] = this.entries[key];
+    return newObj;     // write me!
   },
+
+  copyEntries: function() {
+    let copied = {...this.entries};
+    return copied;
+    },
+
+
   findByValue: function (value) {
-    if (null) { // write me! (using this.isPrimitive)
+    if (!this.isPrimitive(value)) { // write me! (using this.isPrimitive)
       return new TypeError('findByValue: value should be a primitive');
     }
-    if (null) { // write me! (using this.hasValue)
+    if (!this.hasValue(this.entries, value)) { // write me! (using this.hasValue)
       return new ReferenceError(`findByValue: no entry with value (${typeof value}, ${value})`);
     }
-
-    // write me! (this one is a bit trickier)
+    
+    let copiedEntries = this.copyEntries();
+    let requestedObj={};
+    let newKey = Object.keys(copiedEntries).filter(keyOfValue => copiedEntries[keyOfValue] === value);
+      for (let i = 0; i < newKey.length; i++) {
+        if (this.entries[newKey[i]] === value) {
+          requestedObj[newKey[i]] = value;
+      }
+    }
+     return requestedObj; 
+                // write me! (this one is a bit trickier)
   },
 }
