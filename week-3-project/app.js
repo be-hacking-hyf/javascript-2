@@ -11,16 +11,13 @@ const object = {
     // write me!
   },
   get currentEntry() {
-    // debugger;
-    return this.findByKey(this.currentKey);
+    debugger;
       if (this.entries.hasOwnProperty(this.currentKey)) {
       return { [this.currentKey]: this.entries[this.currentKey] };
-    }
-    
-    //  return this.findByKey(this.currentKey);
-    //  return { [this.currentKey]: this.entries[this.currentKey] };
+      } else {throw new ReferenceError(`set currentEntry: no entry with key "${this.currentKey}"`);
+        }
   },
-   
+     
   likedKeys: [],
   get likedEntries() {
     
