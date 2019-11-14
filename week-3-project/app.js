@@ -11,11 +11,9 @@ const object = {
     // write me!
   },
   get currentEntry() {
-    debugger;
-      if (this.entries.hasOwnProperty(this.currentKey)) {
-      return { [this.currentKey]: this.entries[this.currentKey] };
-      } else {throw new ReferenceError(`set currentEntry: no entry with key "${this.currentKey}"`);
-        }
+    // debugger;
+      if (this.removed === false) {return this.findByKey(this.currentKey)}
+       else return { [this.currentKey]: this.entries[this.currentKey] };
   },
      
   likedKeys: [],
@@ -72,15 +70,17 @@ const object = {
     } else {this.entries[key] = value;
           return true;}
   },
+  removed: true,
   removeEntry: function (key) {
     if (typeof key !== 'string') { // write me!
       return new TypeError('removeEntry: key should be a string');
     }
-    if (!this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
+    else if (!this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
       return new ReferenceError(`removeEntry: no property "${key}" in this.entries`);
     }
-     delete this.entries[key];
-     return true;
+    else {delete this.entries[key];
+          this.removed = !this.removed;
+          return true;}
     },
   updateEntry: function (key, value) {
     if (typeof key !== 'string') { // write me!
