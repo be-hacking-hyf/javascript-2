@@ -38,7 +38,7 @@ describe(`removeEntry: should remove a key/value pair from this.entries`, () => 
   describe(`... and actually removes the entries!`, () => {
     valuesToRemove.forEach(arg => {
       it(`object.hasKey(object.entries, ${arg}) === false`, () => {
-        assert.strictEqual(this.entries.hasOwnProperty(arg), false);
+        assert.strictEqual(object.entries.hasOwnProperty(arg), false);
       });
     });
   });
