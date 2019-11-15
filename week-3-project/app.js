@@ -27,7 +27,7 @@ const object = {
       let likedKey = this.likedKeys[i];
       
       const a =  this.findByKey(likedKey);  
-      debugger;
+     
       if ( a instanceof ReferenceError) {
 
         obj[likedKey] = a;
