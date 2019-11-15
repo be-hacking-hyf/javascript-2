@@ -8,42 +8,49 @@ const object = {
       throw new ReferenceError(`set currentEntry: no entry with key "${key}"`);
     }
     this.currentKey = key;
-    // write me!
   },
   get currentEntry() {
     // debugger;
       if (this.removed === false) {return this.findByKey(this.currentKey)}
        else return { [this.currentKey]: this.entries[this.currentKey] };
   },
-     
   likedKeys: [],
   get likedEntries() {
-    
-    
-    return { [this.likedKeys]: this.entries[this.likedKeys] };    
+    let likedObject = {};
+    if (this.likeEntry()){
+      for (let i=0 ; i < this.likedKeys.length ; i++){
+        likedObject[this.likedKeys[i]] = this.entries[this.likedKeys[i]]; 
+      }
+      return likedObject;
+    } else { 
+      return this.likeEntry();
+    }
   },
   likeEntry: function (key) {
-    if (null) { // write the early return condition
+    // debugger;
+    if (typeof key !== 'string') { // write the early return condition
       return new TypeError('likeEntry: key should be a string');
     }
-    if (null) { // write the early return condition
+    if (!this.entries.hasOwnProperty(key)) { // write the early return condition
       return new ReferenceError(`likeEntry: key "${key}" has been removed`);
     }
-    if (null) { // write the early return condition
+    if (this.likedKeys.includes(key)) { // write the early return condition
       return new Error(`likeEntry: key "${key}" is already liked`);
     }
-
-    // write me!
+    this.likedKeys.push(key);
+    if (this.addEntry()){
+      return true;
+    }
   },
   unlikeEntry: function (key) {
-    if (null) { // write the early return condition
+    if (typeof key !== 'string') { // write the early return condition
       return new TypeError('unlikeEntry: key should be a string');
     }
-    if (null) { // write the early return condition
+    if (!this.likedKeys.includes(key)) { // write the early return condition
       return new Error(`unlikeEntry: key "${key}" is not in this.likedKeys`);
     }
-
-    // write me!
+    this.likedKeys.unshift(key);
+    return true;
   },
   entries: {},
   isPrimitive: function (value) {
@@ -64,7 +71,6 @@ const object = {
     if (!this.isPrimitive(value)) { // write me! (using this.isPrimitive)
       return new TypeError('addEntry: value should be a primitive');
     }
-
     if (this.hasKey(this.entries, key)) { // write me! (using this.hasKey)
       return new Error(`addEntry: key "${key}" already exists`);
     } else {this.entries[key] = value;
