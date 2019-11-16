@@ -21,20 +21,18 @@ const object = {
   likedKeys: [],
 
   get likedEntries() {
-    let obj = {};    
+    let likedObj = {};    
     let length = this.likedKeys.length;        
     for (let i=0; i<length; i++) {      
-      let likedKey = this.likedKeys[i];
-      
-      const a =  this.findByKey(likedKey);  
-     
-      if ( a instanceof ReferenceError) {
-
-        obj[likedKey] = a;
-      }
-      obj[likedKey] = this.entries[likedKey];
+      let likedKey = this.likedKeys[i];      
+      const likedEntry =  this.findByKey(likedKey);     
+          
+    if ( likedEntry instanceof ReferenceError) {
+       likedObj[likedKey] = likedEntry;
+     }
+     Object.assign(likedObj, likedEntry);
     }
-     return obj;
+     return likedObj;
 
     // write me!
   },
