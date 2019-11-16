@@ -10,21 +10,25 @@ const object = {
     this.currentKey = key;
   },
   get currentEntry() {
-    // debugger;
-      if (this.removed === false) {return this.findByKey(this.currentKey)}
-       else return { [this.currentKey]: this.entries[this.currentKey] };
+      const entry = this.findByKey(this.currentKey);
+    if (entry instanceof Error) {
+      return {[this.currentKey]:entry}
+    } else {
+      return entry;
+    }
   },
   likedKeys: [],
   get likedEntries() {
     let likedObject = {};
-    if (this.likeEntry()){
-      for (let i=0 ; i < this.likedKeys.length ; i++){
+    for (let i=0 ; i < this.likedKeys.length ; i++){
+      let likedEntry = this.findByKey(this.likedKeys[i]);
+      if (likedEntry instanceof Error) {
+        likedObject[this.likedKeys[i]] = likedEntry
+      } else {
         likedObject[this.likedKeys[i]] = this.entries[this.likedKeys[i]]; 
       }
-      return likedObject;
-    } else { 
-      return this.likeEntry();
     }
+    return likedObject;
   },
   likeEntry: function (key) {
     // debugger;
@@ -76,7 +80,6 @@ const object = {
     } else {this.entries[key] = value;
           return true;}
   },
-  removed: true,
   removeEntry: function (key) {
     if (typeof key !== 'string') { // write me!
       return new TypeError('removeEntry: key should be a string');
@@ -85,7 +88,6 @@ const object = {
       return new ReferenceError(`removeEntry: no property "${key}" in this.entries`);
     }
     else {delete this.entries[key];
-          this.removed = !this.removed;
           return true;}
     },
   updateEntry: function (key, value) {
@@ -120,7 +122,7 @@ const object = {
     let copied = {...this.entries};
     return copied;
     },
-  findByValue: function (value) {
+  findByValue: function(value) {
     if (!this.isPrimitive(value)) { // write me! (using this.isPrimitive)
       return new TypeError('findByValue: value should be a primitive');
       }
