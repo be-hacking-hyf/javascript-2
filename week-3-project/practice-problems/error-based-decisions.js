@@ -35,10 +35,12 @@ try {
   function exercise1(arg) {
     const result = mightReturnAnError(arg);
 
-    if (null) { // write this condition
-      // write me!
+    // debugger;
+
+    if (result instanceof Error) { // write this condition
+      return false;// write me!
     } else {
-      // write me!
+      return true;// write me!
     }
 
   }
@@ -59,10 +61,15 @@ try {
   ]
   function exercise2(arg) {
     const result = mightReturnAnError(arg);
+    
+    if (result instanceof Error) { // write this condition
+      return result.message;// write me!
+    } else {
+      return arg;// write me!
+    }
 
-    // write me!
-
-  }
+    
+      }
   exercise2.display = true;
   evaluate(exercise2, exercise2Tests);
 
@@ -81,10 +88,13 @@ try {
   ]
   function exercise3(arg) {
     const result = mightReturnAnError(arg);
-
-    // write me!
-
-  }
+    if (result instanceof Error) {
+      return {[typeof arg] : (result.message)};
+    } else {
+      return {[typeof arg] : arg};
+    }
+   
+    }
   exercise3.display = true;
   evaluate(exercise3, exercise3Tests);
 
@@ -102,9 +112,13 @@ try {
   ]
   function exercise4(arg) {
     const result = mightReturnAnError(arg);
+    if (result instanceof Error){
+      return [result.message];
+    }else {
+      return [ null, arg];
+    }
 
-    // write me!
-
+    
   }
   exercise4.display = true;
   evaluate(exercise4, exercise4Tests);
@@ -120,5 +134,4 @@ try {
 
 {
   console.groupEnd();
-  document.body.appendChild(document.createElement('hr'));
-}
+  document.body.appendChild(document.createElement('hr'))}

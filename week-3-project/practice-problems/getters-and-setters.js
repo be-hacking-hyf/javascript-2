@@ -27,14 +27,14 @@ try {
     const obj2 = {
       name: 'obj2',
       get greeting() {
-        // write me!
+        return `hi, I'm ${this.name}`;
       }
     }
 
     const obj1Greeting1 = obj1.getGreeting();
     console.assert(obj1Greeting1 === `hi, I'm obj1`, `obj1's greeting is correct (1)`);
 
-    const obj2Greeting1 = null; // fix this line!
+    const obj2Greeting1 = obj2.greeting; // fix this line!
     console.assert(obj2Greeting1 === `hi, I'm obj2`, `obj2's greeting is correct (1)`);
 
     obj1.name = "first";
@@ -43,7 +43,7 @@ try {
     const obj1Greeting2 = obj1.getGreeting();
     console.assert(obj1Greeting2 === `hi, I'm first`, `obj1's greeting is correct (2)`);
 
-    const obj2Greeting2 = null; // fix this line!
+    const obj2Greeting2 = obj2.greeting; // fix this line!
     console.assert(obj2Greeting2 === `hi, I'm second`, `obj2's greeting is correct (2)`);
 
   }
@@ -65,16 +65,16 @@ try {
       numbers: [12, 4, 9, 36, 7, 0, -2],
       modulo: 3,
       get zeroMods() {
-        // write me!
+        return this.numbers.filter(x => x % this.modulo === 0); // write me!
       }
     }
 
-    const obj1mods3 = null;
+    const obj1mods3 = obj1.getZeroMods();
     console.assert(obj1mods3[0] === 12, 'assert 1');
     console.assert(obj1mods3[1] === 9, 'assert 2');
     console.assert(obj1mods3[2] === 36, 'assert 3');
 
-    const obj2mods3 = null;
+    const obj2mods3 = obj2.zeroMods;
     console.assert(obj2mods3[0] === 12, 'assert 4');
     console.assert(obj2mods3[1] === 9, 'assert 5');
     console.assert(obj2mods3[2] === 36, 'assert 6');
@@ -83,11 +83,11 @@ try {
     obj1.modulo = 6;
     obj2.modulo = 6;
 
-    const obj1mods3second = null;
+    const obj1mods3second = obj1.getZeroMods();
     console.assert(obj1mods3second[0] === 12, 'assert 7');
     console.assert(obj1mods3second[1] === 36, 'assert 8');
 
-    const obj2mods3second = null;
+    const obj2mods3second = obj2.zeroMods;
     console.assert(obj2mods3second[0] === 12, 'assert 9');
     console.assert(obj2mods3second[1] === 36, 'assert 10');
 
@@ -110,25 +110,25 @@ try {
       entries: { first: 'hi!', second: 'bye!' },
       currentKey: 'second',
       get currentEntry() {
-        // write me!
+        return this.entries[this.currentKey];// write me!
       }
     }
 
     // replace the null's to pass the asserts:
 
-    const obj1current1 = null;
+    const obj1current1 = obj1.getCurrentEntry();
     console.assert(obj1current1 === 'bye!', 'assert 1');
 
-    const obj2current1 = null;
+    const obj2current1 = obj2.currentEntry;
     console.assert(obj2current1 === 'bye!', 'assert 2');
 
-    obj1.currentKey = null;
-    obj2.currentKey = null;
+    obj1.currentKey = obj1.entries['first'];
+    obj2.currentKey = obj2.entries['first'];
 
-    const obj1current2 = null;
+    const obj1current2 = obj1.currentKey;
     console.assert(obj1current2 === 'hi!', 'assert 3');
 
-    const obj2current2 = null;
+    const obj2current2 = obj2.currentKey;
     console.assert(obj2current2 === 'hi!', 'assert 4');
 
   }
@@ -149,20 +149,20 @@ try {
     const obj2 = {
       greeting: ``,
       set greetingName(newName) {
-        // write me!
+       this.greeting = `hi, I'm ${newName}!`; // write me!
       }
     };
 
     obj1.setGreetingName('obj1');
     console.assert(obj1.greeting === "hi, I'm obj1!", 'assert 1');
 
-    ; // write me!
+    obj2.greetingName = 'obj2'; // write me!
     console.assert(obj2.greeting === "hi, I'm obj2!", 'assert 2');
 
     obj1.setGreetingName('hi');
     console.assert(obj1.greeting === "hi, I'm hi!", 'assert 3');
 
-    ; // write me!
+    obj2.greetingName = "bye"; // write me!
     console.assert(obj2.greeting === "hi, I'm bye!", 'assert 4');
 
   }
@@ -197,13 +197,19 @@ try {
     const obj2 = {
       entries: { first: 'hi!', second: 'bye!' },
       current: {},
-      // write me!
+      set currentEntry(key) {
+        if (this.entries.hasOwnProperty(key)) {
+          this.current = { [key]: this.entries[key] };
+        } else {
+          this.current = { [key]: new Error(`no entry with key "${key}"`) }
+        }
+      }// write me!
     }
 
     obj1.setCurrentEntry('second');
     console.assert(obj1.current.second === "bye!", 'assert 1');
 
-    ; // write me!
+    obj2.currentEntry = 'second'; // write me!
     console.assert(obj2.current.second === "bye!", 'assert 2');
 
 
@@ -211,7 +217,7 @@ try {
     console.assert(obj1.current.first === "hi!", 'assert 3');
     console.assert(obj1.current.hasOwnProperty('second') === false, 'assert 4');
 
-    ; // write me!
+    obj2.currentEntry = 'first'; // write me!
     console.assert(obj2.current.first === "hi!", 'assert 5');
     console.assert(obj2.current.hasOwnProperty('second') === false, 'assert 6');
 
@@ -220,7 +226,7 @@ try {
     console.assert(obj1.current.hi.message === 'no entry with key "hi"', 'assert 7');
     console.assert(obj1.current.hasOwnProperty('first') === false, 'assert 8');
 
-    ; // write me!
+    obj2.currentEntry = 'hi'; // write me!
     console.assert(obj2.current.hi.message === 'no entry with key "hi"', 'assert 9');
     console.assert(obj2.current.hasOwnProperty('first') === false, 'assert 10');
 

@@ -170,6 +170,14 @@ try {
   ];
   function replaceItem(arr, index, newItem) {
     // write me!
+    /*function repeatItems(items, numRepeats) {
+      let result = items.map(e => { 
+        let arr1=[];
+        let filled = arr1.fill(e, 0, numRepeats)
+        return filled;
+        });
+      return result;*/
+      
   }
   replaceItem.display = true;
   evaluate(replaceItem, replaceItemTests);
