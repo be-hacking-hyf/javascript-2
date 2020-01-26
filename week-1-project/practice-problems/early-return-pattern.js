@@ -93,10 +93,10 @@ try {
     { name: 'fifth', args: [2, 3], expected: 'hi!' },
   ];
   function earlyReturn1(a, b) {
-    if (null) return 'string'; // replace null with your logic!
+    if (typeof a === 'string') return 'string'; // replace null with your logic!
     console.assert(typeof a !== 'string', 'if a is a string, this assert should not be reached');
 
-    if (null) return 'boolean'; // replace null with your logic!
+    if (typeof a ==='boolean' && typeof b === 'boolean') return 'boolean'; // replace null with your logic!
     console.assert(typeof b !== 'boolean', 'if b is a boolean, this assert should not be reached');
 
     return 'hi!';
@@ -114,7 +114,7 @@ try {
     { name: 'sixth', args: [], expected: 'param must be an array' },
   ];
   function earlyReturn2(param) {
-    if (null) return 'param must be an array'; // replace null with your logic!
+    if (!Array.isArray(param)) return 'param must be an array'; // replace null with your logic!
 
     return param.reduce((acc, item) => acc + item);
   }
@@ -132,9 +132,9 @@ try {
     { name: 'sixth', args: ['by', 'e!'], expected: 'bye!' },
   ];
   function earlyReturn3(a, b) {
-    if (null) return 'a & b are not strings'; // replace null with your logic!
-    if (null) return 'a is not a string'; // replace null with your logic!
-    if (null) return 'b is not a string'; // replace null with your logic!
+    if (typeof a !== 'string' && typeof b !== 'string') return 'a & b are not strings'; // replace null with your logic!
+    if (typeof a !== 'string') return 'a is not a string'; // replace null with your logic!
+    if (typeof b !== 'string') return 'b is not a string'; // replace null with your logic!
 
     console.assert(typeof a === 'string', 'a should be a string');
     console.assert(typeof b === 'string', 'b should be a string');
@@ -156,8 +156,8 @@ try {
     { name: 'seventh', args: [() => { }], expected: 'argForFunc must be a boolean' },
   ];
   function earlyReturn4(func, argForFunc) {
-    if (null) return 'func must be a function'; // replace null with your logic!
-    if (null) return 'argForFunc must be a boolean'; // replace null with your logic!
+    if (typeof func !== 'function') return 'func must be a function'; // replace null with your logic!
+    if (typeof argForFunc !== 'boolean') return 'argForFunc must be a boolean'; // replace null with your logic!
 
     console.assert(typeof func === 'function', 'func should be a function');
     console.assert(typeof argForFunc === 'boolean', 'argForFunc should be a boolean');

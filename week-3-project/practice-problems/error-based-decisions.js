@@ -35,11 +35,9 @@ try {
   function exercise1(arg) {
     const result = mightReturnAnError(arg);
 
-    if (null) { // write this condition
-      // write me!
-    } else {
-      // write me!
-    }
+    if (result instanceof Error) {
+      return false;
+    } else {return true};
 
   }
   exercise1.display = true;
@@ -59,6 +57,10 @@ try {
   ]
   function exercise2(arg) {
     const result = mightReturnAnError(arg);
+    console.log(result);
+    if (result instanceof Error) {
+      return result.message;
+    } else {return arg};
 
     // write me!
 
@@ -81,9 +83,12 @@ try {
   ]
   function exercise3(arg) {
     const result = mightReturnAnError(arg);
-
+    if (result instanceof Error) {
+      let a = {[typeof arg]: result.message}
+      return a;
+    } else {let a = {[typeof arg]: arg};
+    return a;}
     // write me!
-
   }
   exercise3.display = true;
   evaluate(exercise3, exercise3Tests);
@@ -102,6 +107,11 @@ try {
   ]
   function exercise4(arg) {
     const result = mightReturnAnError(arg);
+    if (result instanceof Error) {
+      let a = [result.message];
+      return a;
+    } else {let a = [null, arg];
+    return a;}
 
     // write me!
 

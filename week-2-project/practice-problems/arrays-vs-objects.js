@@ -15,6 +15,9 @@ try {
     const obj = { prop: "array" };
     const arr = ["object"];
     let _ = null;
+    _ = arr[0];
+    arr[0] = obj.prop;
+    obj.prop = _;
 
     // swap the values stored in each structure
 
@@ -32,6 +35,10 @@ try {
     // swap the values stored in each structure using brackets and these variables
     const objKey = 'prop';
     const arrIndex = 0;
+
+    _ = arr[arrIndex];
+    arr[arrIndex] = obj[objKey];
+    obj[objKey] = _;
 
 
     // asserts

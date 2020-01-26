@@ -2,43 +2,76 @@ const object = {
   numberyStrings: [],
   NaNyStrings: [],
   isNumberyString: function (param) {
-    // write me!
+    return typeof param === 'string' && !isNaN(param);
   },
   addString: function (param) {
-    if (null) return false; // write this early return condition
+   if ( typeof param !== 'string') return false ;
+    ; // write this early return condition
 
-    // write me! (using this.isNumberyString)
+    if (this.isNumberyString(param) === true) {
+      this.numberyStrings.push(param);
+    } else  this.NaNyStrings.push(param);
+    return true
+
+      // write me! (using this.isNumberyString)
   },
-  allStrings: function () {
+  allStrings: function (param) {
+    let arr = [...this.numberyStrings,...this.NaNyStrings];
+    return arr;
+
     // write me!
   },
-  evenStrings: function () {
+  evenStrings: function (param) {
+    let arr = this.numberyStrings.filter(e => e%2===0);
+    return arr;
     // write me!
   },
-  oddStrings: function () {
+  oddStrings: function (param) {
+    let arr = this.numberyStrings.filter(e => e%2!==0);
+    return arr;
     // write me!
   },
-  negativeStrings: function () {
+  negativeStrings: function (param) {
+    let arr = this.numberyStrings.filter(e => e<0);
+    return arr;
     // write me!
   },
-  positiveStrings: function () {
+  positiveStrings: function (param) {
+    let arr = this.numberyStrings.filter(e => e>=0);
+    return arr;
     // write me!
   },
-  zeroStrings: function () {
+  zeroStrings: function (param) {
+    let arr = this.numberyStrings.filter(e => e==0);
+    return arr;
     // write me!
   },
-  numberyAsNumbers: function () {
+  numberyAsNumbers: function (param) {
+    let arr = this.numberyStrings.map(e => Number(e));
+    return arr;
     // write me!
   },
-  NaNyAsNumbers: function () {
+<<<<<<< HEAD
+  NaNyAsNumbers: function (param) {
+    let arr = this.NaNyStrings.map(e => Number(e));
+    return arr;
     // write me!
-  },
+=======
   sumOfNumbery: function () {
     // write me! (using a Array.prototype.reduce())
+>>>>>>> d6c2c3ca9c538f289536279768662d3f3fa37def
   },
-  sumOfNaNy: function () {
-    // write me!
+  sumOfNumbery: function (param) {
+   let sum = 0;
+   for (i in this.numberyStrings) {
+      sum += Number(this.numberyStrings[i]);
+    }
+   return sum;
+       // write me!
   },
+  sumOfNaNy: function (param) {
+    return NaN;
+    }
 };
 
 
