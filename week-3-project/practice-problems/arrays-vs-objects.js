@@ -14,8 +14,10 @@ try {
   function swapValues1() {
     const obj = { prop: "array" };
     const arr = ["object"];
-    let _ = null;
-
+    let temp = obj.prop;
+    obj.prop = arr[0];
+    arr[0]=temp;
+    
     // swap the values stored in each structure
 
 
@@ -27,11 +29,12 @@ try {
   function swapValues2() {
     const obj = { prop: "array" };
     const arr = ["object"];
-    let _ = null;
-
-    // swap the values stored in each structure using brackets and these variables
+      // swap the values stored in each structure using brackets and these variables
     const objKey = 'prop';
     const arrIndex = 0;
+    let temp = obj[objKey];
+    obj[objKey] = arr[arrIndex];
+    arr[arrIndex]=temp;
 
 
     // asserts
@@ -54,7 +57,10 @@ try {
     const arr2 = [3, 2, 1];
     const arr3 = [1, 2, 3];
     // do you remember why '===' won't work here?
+    arr2[0]=1;
+    arr2[2]=3;
     console.assert(evaluate.compareValues(arr1, arr2), 'arr: same values, different order');
+    // debugger;
     console.assert(evaluate.compareValues(arr1, arr3), 'arr: same values, same order');
 
 

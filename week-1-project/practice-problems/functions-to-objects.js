@@ -83,10 +83,10 @@ try {
 
     // methods can "return" values to their objects
     obj.a = 3, obj.b = 4;
-    obj.sum();
+    obj.sum(3,4);
     console.assert(7 === obj.result, 'obj.result should be 7');
-    obj.a = 5;
-    obj.sum();
+    obj.a = 5; obj.b = 4;
+    obj.sum(5,4);
     console.assert(9 === obj.result, 'obj.result should be 9');
 
   }
@@ -111,13 +111,13 @@ try {
         this.a = a;
         this.b = b;
       },
-      sumAandB: function () {
+      sumAandB: function (a, b) {
         return this.a + this.b;
       }
     };
 
     obj.setAandB(3, 4);
-    const result2 = obj.sumAandB();
+    const result2 = obj.sumAandB(3, 4);
 
   }
   evaluate(example_twoMethods);
@@ -132,7 +132,10 @@ try {
 
     const obj = {
       array: [3],
-      mergeArrays: function (arrToMerge) { }
+      mergeArrays: function (arrToMerge) { 
+        // return [...this.array, ...arrToMerge];
+        return this.array.concat(arrToMerge);
+      }
     }
 
 
@@ -166,7 +169,9 @@ try {
 
     const obj = {
       array: [3],
-      mergeArrays: function (arrToMerge) { }
+      mergeArrays: function (arrToMerge) {
+        return this.array = [...this.array, ...arrToMerge];
+       }
     }
 
     obj.mergeArrays([2]);
@@ -192,7 +197,9 @@ try {
 
     const obj = {
       mixer: '',
-      remix: function (str) { }
+      remix: function (str) { 
+          return str.split('').join(this.mixer);
+      }
     };
 
     console.assert(obj.remix('hello') === 'hello', 'assert 1');
@@ -216,8 +223,10 @@ try {
     const obj = {
       mixer: '',
       remixed: '',
-      remix: function (str) { },
-      getRemixed: function () { }
+      remix: function (str) { 
+        this.remixed = str.split('').join(this.mixer);
+      },
+      getRemixed: function () {return this.remixed}
     };
 
     obj.remix('hello');

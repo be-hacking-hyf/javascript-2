@@ -34,7 +34,19 @@ describe(`hasKey: determines if an object has a given key`, () => {
       });
     });
   });
+
   describe(`and returns false for non-existant entries.`, () => {
+    ['entries', 'hasKey', 'toSource', 'valueOf', 'hasOwnProperty', ''].forEach(arg => {
+      it(arg, () => {
+        const result = object.hasKey(object.entries, arg);
+        assert.strictEqual(result, false);
+      });
+    });
+  });
+  describe(`or when there are no entries!`, () => {
+    before(() => {
+      object.entries = {};
+    });
     ['entries', 'hasKey', 'toSource', 'valueOf', 'hasOwnProperty', ''].forEach(arg => {
       it(arg, () => {
         const result = object.hasKey(object.entries, arg);
@@ -43,6 +55,7 @@ describe(`hasKey: determines if an object has a given key`, () => {
       });
     });
   });
+
   describe(`or when there are no entries!`, () => {
     before(() => {
       object.entries = {};
@@ -55,3 +68,4 @@ describe(`hasKey: determines if an object has a given key`, () => {
     });
   });
 });
+

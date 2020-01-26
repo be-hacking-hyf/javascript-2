@@ -21,7 +21,8 @@ try {
     { name: 'tenth', args: [new WeakMap()], expected: false },
   ];
   function isPrimitive(thing) {
-    // write me!
+    if (Object(thing) !== thing) {return true};
+    return false; 
   }
   isPrimitive.display = true;
   evaluate(isPrimitive, isPrimitiveTests);
@@ -37,8 +38,16 @@ try {
     { name: 'eighth', args: [{ b: undefined }, 'b'], expected: true },
   ];
   function hasKey(obj, key) {
-    // write me!
-  }
+    return (obj.hasOwnProperty(key));
+      
+    // if(Object.keys(obj).includes(key)) {
+    //   const newObj = {};
+    //   newObj[key] = obj[key];
+    //   return newObj;
+    // }
+  };
+       
+    
   hasKey.display = true;
   evaluate(hasKey, hasKeyTests);
 
@@ -53,7 +62,7 @@ try {
     { name: 'seventh', args: [{ a: false, b: false }, true], expected: false },
   ];
   function hasValue(obj, value) {
-    // write me!
+    return (Object.values(obj).indexOf(value) > -1);
     // consider using Object.keys, .filter and obj.hasOwnProperty
   }
   hasValue.display = true;
@@ -71,7 +80,9 @@ try {
     { name: 'fifth', args: [{}, 'b', 'hi!'], expected: { b: 'hi!' } },
   ];
   function modifyToObjectWithBrackets(obj, key, value) {
-    // write me!
+    let newObj={...obj};
+    newObj[key] = value;
+    return newObj;
     // (remember to avoid side effects)
   }
   modifyToObjectWithBrackets.display = true;
@@ -85,8 +96,12 @@ try {
     { name: 'fifth', args: [secondObj, 'b'], expected: { a: 0 } },
     { name: 'fifth', args: [{ b: 'hi!' }, 'b'], expected: {} },
   ];
+  
   function deleteFromObject(obj, key) {
-    // write me!
+    
+    let newObj={...obj};
+    delete newObj[key];
+    return newObj;
     // (remember to avoid side effects)
   }
   deleteFromObject.display = true;
@@ -102,7 +117,12 @@ try {
     { name: 'fifth', args: [{ b: 'hi!' }, 'b'], expected: { b: 'hi!' } },
   ];
   function findByKey(obj, key) {
-    // write me!
+    const newObj2 = {};
+    if (!obj.hasOwnProperty(key)){
+      return newObj2;
+    }
+    newObj2[key] = obj[key];
+    return newObj2;
     // (remember to avoid side effects)
   }
   findByKey.display = true;
@@ -118,12 +138,25 @@ try {
     { name: 'fifth', args: [{ b: 'hi!', c: 'hi!' }, 'hi!'], expected: { b: 'hi!', c: 'hi!' } },
   ];
   function findByValue(obj, value) {
-    // write me!
+    let objNew = {};
+    const obje3 = {...obj};
+    let key = Object.keys(obje3).filter(key => obje3[key] === value);
+    if(key.length===0){
+      return {};
+    }else if (key.length===1){
+      objNew[key]=value;
+      return objNew;
+    }else if (key.length>1){
+      for (let i=0 ; i < key.length; i++) {
+      objNew[key[i]]=value;
+      }
+      return objNew;
     // (remember to avoid side effects)
   }
+}
   findByValue.display = true;
   evaluate(findByValue, findByValueTests)
-
+  
 } catch (err) {
   console.log(err);
   document.body.appendChild(

@@ -1,3 +1,8 @@
+## Week1 Practice Exercises Link
+   ### Please follow the link below to open the practice exercises of Week1 project
+
+<a href="https://mert1980.github.io/javascript-2/week-1-project/practice-problems/index.html">Practice Exercises Week1</a><br><br>
+
 ## Week 1 Project
 
 The weekly projects in JS 2 will be making an even stronger distinction between your core application and the user interface.   To help you with this transition there will be two assignment tables, one for the core app object and another for the user interface.
